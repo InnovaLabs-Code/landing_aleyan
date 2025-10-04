@@ -1,7 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaBuilding, FaIndustry, FaHome } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 // Importa tus imágenes aquí
 import logo1 from '../assets/images/client1.png';

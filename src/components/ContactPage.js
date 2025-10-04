@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, MapPin, Mail, Phone, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { CheckCircle, MapPin, Mail, Phone, Clock } from 'lucide-react';
 // -> IMPORTACIÓN CLAVE para el SEO
 import { Helmet } from 'react-helmet-async';
 
