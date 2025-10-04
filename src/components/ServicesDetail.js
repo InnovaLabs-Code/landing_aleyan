@@ -185,10 +185,10 @@ const ServicesDetail = () => {
           <div className="container mx-auto px-6 py-16 ">
           <motion.h2
             className="text-2xl font-bold text-center text-white mb-12"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
           >
             Nuestra experiencia y compromiso nos permiten ofrecer soluciones personalizadas y de alta calidad que se adaptan a las necesidades específicas de cada cliente.
           </motion.h2>
