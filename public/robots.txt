@@ -1,0 +1,8 @@
+# Indica que estas reglas aplican a todos los bots
+User-agent: *
+
+# Permite el acceso a todo el contenido del sitio
+Allow: /
+
+# Especifica la ubicación de tu Sitemap
+Sitemap: https://www.aleyansac.com/sitemap.xml

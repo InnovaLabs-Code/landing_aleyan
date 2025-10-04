@@ -1,0 +1,25 @@
+# dependencias
+/node_modules
+/package-lock.json
+
+# compilaciones de producción
+/build
+/dist
+/out
+
+# entorno local y secretos
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# logs y archivos de depuración
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.vite/
+
+# directorios de herramientas comunes
+.vscode
+.idea
