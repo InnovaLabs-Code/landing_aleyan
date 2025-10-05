@@ -114,6 +114,20 @@ const HomeSection = () => {
                 />
                 {/* Reemplaza con tu URL real */}
                 <link rel="canonical" href="https://aleyansac.com/" />
+
+                <script type="application/ld+json">{`
+                    {
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    "name": "Constructora Aleyan S.A.C.",
+                    "url": "https://www.aleyansac.com/",
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": "https://www.aleyansac.com/search?q={search_term_string}",
+                        "query-input": "required name=search_term_string"
+                    }
+                    }
+                    `}</script>
             </Helmet>
 
             {/* 3. El contenido principal de la página (la section #inicio) */}

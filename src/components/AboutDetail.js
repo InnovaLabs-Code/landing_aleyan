@@ -20,7 +20,7 @@ const AboutDetail = () => {
           content="Conoce la historia, visión, misión y los 8 valores de Constructora Aleyan S.A.C., líderes en precisión y construcción de estructuras metálicas en Perú." 
         />
         {/* Reemplaza con tu URL real */}
-        <link rel="canonical" href="https://tudominio.com/about-detail" />
+        <link rel="canonical" href="https://aleyansac.com/about-detail" />
       </Helmet>
 
       {/* 3. El div principal de la página ahora es el segundo elemento del Fragmento */}
