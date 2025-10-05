@@ -11,13 +11,12 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScroollTop';
 import WhatsAppWidget from './components/WhatsAppWidget'; 
 import ContactPage from './components/ContactPage';
-import { Analytics } from "@vercel/analytics/react"
+
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      
       {/* 2. Colocar el widget aquí para que aparezca en todas las rutas */}
       <WhatsAppWidget /> 
       
@@ -40,7 +39,6 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        <Analytics />
       </div>
     </Router>
   );
