@@ -120,10 +120,10 @@ const HomeSection = () => {
                     "@context": "https://schema.org",
                     "@type": "WebSite",
                     "name": "Constructora Aleyan S.A.C.",
-                    "url": "https://www.aleyansac.com/",
+                    "url": "https://aleyansac.com/",
                     "potentialAction": {
                         "@type": "SearchAction",
-                        "target": "https://www.aleyansac.com/search?q={search_term_string}",
+                        "target": "https://aleyansac.com/search?q={search_term_string}",
                         "query-input": "required name=search_term_string"
                     }
                     }

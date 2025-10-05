@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Especifica la ubicación de tu Sitemap
-Sitemap: https://www.aleyansac.com/sitemap.xml
+Sitemap: https://aleyansac.com/sitemap.xml

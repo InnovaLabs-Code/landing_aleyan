@@ -161,7 +161,7 @@ const ProjectsDetail = () => {
               content="Explora nuestro portafolio de proyectos exitosos, incluyendo naves industriales, complejos comerciales y obras civiles con estructuras metálicas de alta precisión." 
           />
           {/* Reemplaza con tu URL real */}
-          <link rel="canonical" href="https://tudominio.com/projects-detail" />
+          <link rel="canonical" href="https://aleyansac.com/projects-detail" />
       </Helmet>
 
       {/* 3. El div principal de la página ahora es el segundo elemento del Fragmento */}
