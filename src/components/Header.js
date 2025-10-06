@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/images/logoaleyan.png'; 
+import logo from '../assets/images/logoaleyan2.webp'; 
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,6 +40,8 @@ const Header = () => {
           <button 
             onClick={toggleMenu} 
             className="text-white hover:text-blue-600 focus:outline-none"
+            // CLAVE: El aria-label cambia según el estado del menú
+      aria-label={isMenuOpen ? "Cerrar menú de navegación" : "Abrir menú de navegación"}
           >
             {isMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
           </button>

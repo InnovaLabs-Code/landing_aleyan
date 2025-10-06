@@ -114,7 +114,20 @@ const HomeSection = () => {
                 />
                 {/* Reemplaza con tu URL real */}
                 <link rel="canonical" href="https://aleyansac.com/" />
-
+                <link rel="preconnect" href="https://images.unsplash.com" /> 
+                <link 
+                rel="preload" 
+                href="/styles.css" 
+                as="style" 
+                onLoad="this.onload=null;this.rel='stylesheet'" 
+                />
+                
+                {/* FALLBACK CORREGIDO: Usando dangerouslySetInnerHTML */}
+                <noscript 
+                dangerouslySetInnerHTML={{
+                    __html: '<link rel="stylesheet" href="/styles.css" />'
+                }}
+                />
                 <script type="application/ld+json">{`
                     {
                     "@context": "https://schema.org",

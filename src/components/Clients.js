@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 
 // Importa tus imágenes aquí
 import logo1 from '../assets/images/client1.png';
-import logo2 from '../assets/images/client2.png';
-import logo3 from '../assets/images/client3.png';
+import logo2 from '../assets/images/client2.1.webp';
+import logo3 from '../assets/images/client3.1.webp';
 import logo4 from '../assets/images/client4.png';
-import logo5 from '../assets/images/client5.jpg';
+import logo5 from '../assets/images/client5.1.webp';
 import logo6 from '../assets/images/client6.png';
 import logo7 from '../assets/images/client7.png';
 import logo8 from '../assets/images/client8.png';
@@ -81,6 +81,7 @@ const Clients = () => {
                   src={client.src} 
                   alt={client.alt} 
                   className="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" 
+                  loading="lazy"
                 />
               </div>
             ))}
