@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'; // Importar useState y useEf
 import { motion } from 'framer-motion';
 import { ArrowLeft, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import ParticlesBackground from './ParticlesBackground';
+
 // -> IMPORTAR HELMET
 import { Helmet } from 'react-helmet-async';
 
@@ -179,7 +179,7 @@ const ServicesDetail = () => {
           />
           
           
-<ParticlesBackground />
+
           
           {/* Overlay para oscurecer y mejorar legibilidad del texto - MANTENIDO */}
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>

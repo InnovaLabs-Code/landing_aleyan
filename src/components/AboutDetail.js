@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import history from '../assets/images/history.png';
 import about1 from '../assets/images/about1.png';
 import about2 from '../assets/images/about2.jpg';
-import ParticlesBackground from './ParticlesBackground';
+
 
 const AboutDetail = () => {
   // CLAVE: Nuevo estado para controlar la carga y el inicio de la animación
@@ -76,7 +76,7 @@ const AboutDetail = () => {
                       }}
                     />
 
-                    <ParticlesBackground />
+                    
           {/* Capa de degradado MANTENIDA para efecto visual sutil si lo deseas, o ELIMINALA */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-transparent"></div> 
           
