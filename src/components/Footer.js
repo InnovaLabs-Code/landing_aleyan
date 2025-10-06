@@ -11,7 +11,8 @@ const Footer = () => {
         <div className="flex flex-col md:text-left">
           
           <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="Logo Constructora Aleyan SAC" className="h-10 w-auto" />
+              <img src={logo} alt="Logo Constructora Aleyan SAC" width={170} 
+    height={46} className="h-10 w-auto" />
             </Link>
           
           <p className="text-sm leading-relaxed mb-6 py-2 text-gray-400">

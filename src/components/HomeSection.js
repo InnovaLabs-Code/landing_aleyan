@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Users, Hammer, Award, ArrowRight, CheckCircle, Award as AwardIcon, Users as UsersIcon, Lightbulb, Settings, Layout, Rocket, UserPlus } from 'lucide-react';
+import { Users, Hammer, Award, ArrowRight, CheckCircle, Award as AwardIcon, Users as UsersIcon, Lightbulb, Settings, Layout, Rocket, } from 'lucide-react';
 import { Link } from 'react-router-dom';
 // -> IMPORTAR HELMET
 import { Helmet } from 'react-helmet-async';
@@ -116,18 +116,19 @@ const HomeSection = () => {
                 <link rel="canonical" href="https://aleyansac.com/" />
                 <link rel="preconnect" href="https://images.unsplash.com" /> 
                 <link 
-                rel="preload" 
-                href="/styles.css" 
-                as="style" 
-                onLoad="this.onload=null;this.rel='stylesheet'" 
-                />
-                
-                {/* FALLBACK CORREGIDO: Usando dangerouslySetInnerHTML */}
-                <noscript 
-                dangerouslySetInnerHTML={{
-                    __html: '<link rel="stylesheet" href="/styles.css" />'
-                }}
-                />
+    rel="preload" 
+    href="/styles.css" // RUTA DE TU ARCHIVO CSS
+    as="style" 
+    // FUNCIÓN JS PARA APLICAR EL CSS ASÍNCRONAMENTE
+    onLoad="this.onload=null;this.rel='stylesheet'" 
+/>
+
+{/* FALLBACK CORREGIDO: Usando dangerouslySetInnerHTML para inyectar la etiqueta <link> como HTML crudo. */}
+<noscript 
+    dangerouslySetInnerHTML={{
+        __html: '<link rel="stylesheet" href="/styles.css" />'
+    }}
+/>
                 <script type="application/ld+json">{`
                     {
                     "@context": "https://schema.org",
