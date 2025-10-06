@@ -168,7 +168,10 @@ const ProjectsDetail = () => {
       <div className="min-h-screen bg-gray-50">
         {/* Sección 1: Header de la página */}
         <motion.div
-          className="bg-gradient-to-r from-purple-600 to-indigo-700 text-white py-20 relative overflow-hidden"
+          className="text-white py-40 relative overflow-hidden"
+          style={{ 
+            backgroundImage: 'linear-gradient(to right, #0b254eff, #334155)'
+          }}
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}

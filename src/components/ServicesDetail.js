@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // Importar useState y useEffect
 import { motion } from 'framer-motion';
 import { ArrowLeft, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ParticlesBackground from './ParticlesBackground';
 // -> IMPORTAR HELMET
 import { Helmet } from 'react-helmet-async';
 
@@ -15,7 +16,7 @@ import service7 from '../assets/images/service7.jpg';
 
 const ServiceCard = ({ image, title, description, delay }) => (
   <motion.div
-    className="relative group h-[500px] rounded-2xl overflow-hidden shadow-xl cursor-pointer"
+    className="relative group h-[500px] rounded-2xl overflow-hidden shadow-xl cursor-pointer will-change-transform" // Añadido will-change-transform
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     // CAMBIO CLAVE: Una vez que aparece, no se repite
@@ -54,6 +55,26 @@ const ServiceCard = ({ image, title, description, delay }) => (
 );
 
 const ServicesDetail = () => {
+  // CLAVE: Estado para controlar el inicio de la animación
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Retrasar el inicio de las animaciones 50ms después del montaje
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 50); 
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Definición de las props de animación condicional para la entrada
+  const enterAnimationProps = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }, 
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.6 }
+  };
+  
+  // Datos de servicios
   const services = [
     {
       image: service1,
@@ -138,21 +159,34 @@ const ServicesDetail = () => {
       {/* 2. El div principal de la página ahora es el segundo elemento del Fragmento */}
       <div className="min-h-screen bg-gray-50">
         
-        {/* Header de la página */}
-        <div className="relative text-white py-40 overflow-hidden">
-          {/* Imagen de fondo con difuminado */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1569950044272-e04b4b26300a?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
-              filter: 'blur(2px)'
-            }}
-          ></div>
+        {/* Header de la página: FONDO DE COLOR SÓLIDO + ANIMACIÓN */}
+        <div className="relative text-white py-40 overflow-hidden bg-gray-800">
           
-          {/* Overlay para oscurecer y mejorar legibilidad del texto */}
+          {/* Nuevo Elemento: Animación de Gradiente Sutil (GPU Accelerated) */}
+          <motion.div
+            className="absolute inset-0 z-0"
+            style={{ 
+              backgroundImage: 'linear-gradient(to right, #0b254eff, #334155)', // Colores de gradiente
+            }}
+            // Animación sutil de desplazamiento de fondo infinito
+            animate={{ backgroundPosition: ['0% 50%', '100% 50%'] }}
+            transition={{ 
+              ease: "linear", 
+              duration: 30, // Más lento para que no sea intrusivo
+              repeat: Infinity,
+              repeatType: "reverse"
+            }}
+          />
+          
+          
+<ParticlesBackground />
+          
+          {/* Overlay para oscurecer y mejorar legibilidad del texto - MANTENIDO */}
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
           
           <div className="relative container mx-auto px-6 text-center z-10">
+            {/* Animaciones de Header: Usamos animate directamente para que inicien inmediatamente con la carga */}
+            
             <motion.h1
               className="text-5xl md:text-6xl font-extrabold mb-4"
               initial={{ opacity: 0, y: -30 }}
@@ -162,7 +196,7 @@ const ServicesDetail = () => {
               Nuestros Servicios
             </motion.h1>
             <motion.p
-              className="text-xl text-gray-100 max-w-3xl mx-auto"
+              className="text-xl text-gray-100 max-w-6xl mx-auto"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -183,18 +217,18 @@ const ServicesDetail = () => {
         {/* Sección de servicios */}
         <div className="bg-[#191A19]">
           <div className="container mx-auto px-6 py-16 ">
+          {/* Título de Servicios: Aplicación de Animación Condicional */}
           <motion.h2
-            className="text-2xl font-bold text-center text-white mb-12"
-            initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-2xl font-bold text-center text-white mb-12 will-change-transform"
+            {...enterAnimationProps}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             Nuestra experiencia y compromiso nos permiten ofrecer soluciones personalizadas y de alta calidad que se adaptan a las necesidades específicas de cada cliente.
           </motion.h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {services.map((service, index) => (
+              // ServiceCard ya tiene su propia animación optimizada
               <ServiceCard
                 key={index}
                 image={service.image}
@@ -211,11 +245,10 @@ const ServicesDetail = () => {
         <section className="bg-gray-100 py-16 sm:py-14">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             
+            {/* Título de Proceso: Aplicación de Animación Condicional */}
             <motion.div
-              className="mx-auto max-w-3xl text-center mb-16"
-              initial={{ opacity: 0, y: -30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              className="mx-auto max-w-3xl text-center mb-16 will-change-transform"
+              {...enterAnimationProps}
               transition={{ duration: 0.6 }}
             >
               {/* Título de la sección */}
@@ -229,10 +262,8 @@ const ServicesDetail = () => {
               {processSteps.map((step, index) => (
                 <motion.div
                   key={step.number}
-                  className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center h-full"
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center h-full will-change-transform"
+                  {...enterAnimationProps}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                 >
                   {/* Círculo Numerado */}
@@ -256,10 +287,8 @@ const ServicesDetail = () => {
           <div className="container mx-auto px-6">
             
             <motion.h2
-              className="text-4xl md:text-4xl font-bold text-gray-800 text-center mb-12"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              className="text-4xl md:text-4xl font-bold text-gray-800 text-center mb-12 will-change-transform"
+              {...enterAnimationProps}
               transition={{ duration: 0.6 }}
             >
               Retorno Sólido: La Ventaja <span className="text-blue-600">Aleyan S.A.C</span>
@@ -271,9 +300,9 @@ const ServicesDetail = () => {
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
-                    className="flex items-start"
+                    className="flex items-start will-change-transform"
                     initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    whileInView={isLoaded ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }} // Animación Condicional
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
@@ -295,10 +324,8 @@ const ServicesDetail = () => {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             
             <motion.div
-              className="mx-auto max-w-3xl text-center"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              className="mx-auto max-w-3xl text-center will-change-transform"
+              {...enterAnimationProps}
               transition={{ duration: 0.6 }}
             >
               

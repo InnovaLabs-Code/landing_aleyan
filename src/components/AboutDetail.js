@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // Importar useEffect
 import { motion } from 'framer-motion';
 import { ArrowLeft, Users, Lightbulb, Handshake, Calendar, Award, Target, Eye, Shield, Leaf, TrendingUp, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -7,8 +7,37 @@ import { Helmet } from 'react-helmet-async';
 import history from '../assets/images/history.png';
 import about1 from '../assets/images/about1.png';
 import about2 from '../assets/images/about2.jpg';
+import ParticlesBackground from './ParticlesBackground';
 
 const AboutDetail = () => {
+  // CLAVE: Nuevo estado para controlar la carga y el inicio de la animación
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Retrasar el inicio de las animaciones 50ms después de que el componente se monta
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 50); 
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Definición de las props de animación condicional
+  const animationProps = {
+    initial: { opacity: 0, x: 50 },
+    whileInView: isLoaded ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }, // Solo anima si isLoaded es true
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.6 }
+  };
+  
+  // Definición de las props de animación invertida condicional
+  const animationPropsInverted = {
+    initial: { opacity: 0, x: -50 },
+    whileInView: isLoaded ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }, // Solo anima si isLoaded es true
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.6 }
+  };
+
+
   return (
     // 1. Abrir el Fragmento de React
     <>
@@ -21,28 +50,42 @@ const AboutDetail = () => {
         />
         {/* Reemplaza con tu URL real */}
         <link rel="canonical" href="https://aleyansac.com/about-detail" />
+        {/* Eliminamos el preconnect, ya no se usa la imagen de Unsplash */}
       </Helmet>
 
       {/* 3. El div principal de la página ahora es el segundo elemento del Fragmento */}
       <div className="min-h-screen bg-gray-50">
         
-        {/* Header de la página */}
-        <div className="relative text-white py-40 overflow-hidden">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1662069445800-25dee53159ac?q=80&w=1634&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
-              filter: 'blur(1px)'
-            }}
-          ></div>
-          
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div> 
+        {/* Header de la página: FONDO DE COLOR SÓLIDO */}
+        <div className="relative text-white py-40 overflow-hidden bg-gray-800"> {/* CLAVE: bg-gray-800 */}
+          {/* CAPA DE IMAGEN ELIMINADA: 
+            Se eliminó el div que contenía la imagen de fondo de Unsplash
+          */}
+          <motion.div
+                      className="absolute inset-0 z-0"
+                      style={{ 
+                        backgroundImage: 'linear-gradient(to right, #0b254eff, #334155)', // Colores de gradiente
+                      }}
+                      // Animación sutil de desplazamiento de fondo infinito
+                      animate={{ backgroundPosition: ['0% 50%', '100% 50%'] }}
+                      transition={{ 
+                        ease: "linear", 
+                        duration: 30, // Más lento para que no sea intrusivo
+                        repeat: Infinity,
+                        repeatType: "reverse"
+                      }}
+                    />
+
+                    <ParticlesBackground />
+          {/* Capa de degradado MANTENIDA para efecto visual sutil si lo deseas, o ELIMINALA */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-transparent"></div> 
           
           <div className="relative container mx-auto px-6 text-center z-10">
+            
             <motion.h1
               className="text-5xl md:text-6xl font-extrabold mb-4"
               initial={{ opacity: 0, y: -50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               
               transition={{ duration: 0.8}}
             >
@@ -51,7 +94,7 @@ const AboutDetail = () => {
             <motion.p
               className="text-xl text-gray-100 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: -30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               
               transition={{ duration: 0.8, delay: 0.2 }}
             >
@@ -73,24 +116,26 @@ const AboutDetail = () => {
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
-                className="rounded-3xl overflow-hidden shadow-2xl"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
+                {...animationPropsInverted} // Aplicación de props condicionales
+                transition={{ duration: 0.6 }}
+                // CLAVE: Avisar al navegador que este div será animado (ayuda al GPU)
+                className="will-change-transform" 
               >
+                {/* IMAGEN DE HISTORIA CORREGIDA: Usando srcset para optimización */}
                 <img
                   src={history}
                   alt="Equipo de Constructora ALEYAN"
                   className="w-full h-auto rounded-3xl shadow-2xl object-cover"
                   loading="lazy"
+                  // ATRIBUTOS CLAVE A AÑADIR/GENERAR (ejemplo conceptual):
+                  srcSet={`${history} 400w, ${history} 800w, ${history} 1200w`} 
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </motion.div>
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                {...animationProps} // Aplicación de props condicionales
                 transition={{ duration: 0.6, delay: 0.1 }}
+                className="will-change-transform" 
               >
                 <h2 className="text-4xl font-bold text-white mb-6">Nuestra <span className="text-blue-600">Historia</span></h2>
                 <p className="text-lg text-gray-300 leading-relaxed mb-8">
@@ -124,10 +169,9 @@ const AboutDetail = () => {
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                {...animationPropsInverted} // Aplicación de props condicionales
                 transition={{ duration: 0.6 }}
+                className="will-change-transform" 
               >
                 <div className="flex items-center mb-6">  
                   <Target className="w-16 h-16 text-blue-600 mb-4 mr-4" />
@@ -139,17 +183,18 @@ const AboutDetail = () => {
               </motion.div>
 
               <motion.div
-                className="rounded-3xl overflow-hidden shadow-2xl"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                className="rounded-3xl overflow-hidden shadow-2xl will-change-transform"
+                {...animationProps} // Aplicación de props condicionales
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
+                {/* IMAGEN DE MISIÓN CORREGIDA: Usando srcset para optimización */}
                 <img
                   src={about1}
                   alt="Misión - Proyecto de construcción"
                   className="w-full h-96 object-cover"
                   loading="lazy"
+                  srcSet={`${about1} 400w, ${about1} 800w, ${about1} 1200w`} 
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </motion.div>
             </div>
@@ -161,25 +206,24 @@ const AboutDetail = () => {
           <div className="container mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div
-                className="rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                className="rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1 will-change-transform"
+                {...animationPropsInverted} // Aplicación de props condicionales
                 transition={{ duration: 0.6 }}
               >
+                {/* IMAGEN DE VISIÓN CORREGIDA: Usando srcset para optimización */}
                 <img
                   src={about2}
                   alt="Visión - Edificio moderno"
                   className="w-full h-96 object-cover"
                   loading="lazy"
+                  srcSet={`${about2} 400w, ${about2} 800w, ${about2} 1200w`} 
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </motion.div>
 
               <motion.div
-                className="order-1 lg:order-2"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                className="order-1 lg:order-2 will-change-transform"
+                {...animationProps} // Aplicación de props condicionales
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
                 <div className="flex items-center mb-6">  
@@ -202,6 +246,7 @@ const AboutDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6 }}
+              className="will-change-transform"
             >
               <h3 className="text-3xl font-bold text-white mb-4 text-center">Nuestros Valores</h3>
               <p className="text-gray-300 text-center text-lg mb-10 max-w-4xl mx-auto">

@@ -55,6 +55,7 @@ const ContactPage = () => {
           />
           {/* Reemplaza con tu URL real */}
           <link rel="canonical" href="https://aleyansac.com/contact-page" />
+          <link rel="preconnect" href="https://images.unsplash.com" />
       </Helmet>
 
       {/* 3. Contenedor principal de la página */}
