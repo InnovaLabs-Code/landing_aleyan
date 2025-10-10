@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 // -> IMPORTAR HELMET
 import { Helmet } from 'react-helmet-async';
 
-import service1 from '../assets/images/service1.jpg';
-import service2 from '../assets/images/service2.jpg';
-import service3 from '../assets/images/service3.jpg';
-import service4 from '../assets/images/service4.png';
+import service1 from '../assets/images/service1.webp';
+import service2 from '../assets/images/service2.webp';
+import service3 from '../assets/images/service3.webp';
+import service4 from '../assets/images/service4.webp';
 import service5 from '../assets/images/service5.jpg';
-import service6 from '../assets/images/service6.jpg';
-import service7 from '../assets/images/service7.jpg';
+import service6 from '../assets/images/service6.webp';
+import service7 from '../assets/images/service7.webp';
 
 const ServiceCard = ({ image, title, description, delay }) => (
   <motion.div

@@ -4,9 +4,9 @@ import { ArrowLeft, Users, Lightbulb, Handshake, Calendar, Award, Target, Eye, S
 import { Link } from 'react-router-dom';
 // -> IMPORTAR HELMET
 import { Helmet } from 'react-helmet-async';
-import history from '../assets/images/history.png';
-import about1 from '../assets/images/about1.png';
-import about2 from '../assets/images/about2.jpg';
+import history from '../assets/images/history.webp';
+import about1 from '../assets/images/about1.webp';
+import about2 from '../assets/images/about2.webp';
 
 
 const AboutDetail = () => {
