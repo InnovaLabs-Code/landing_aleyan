@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; // Importar useState y useEffect
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -16,14 +16,23 @@ import { Link } from "react-router-dom";
 // -> IMPORTAR HELMET
 import { Helmet } from "react-helmet-async";
 
-import service1 from "../assets/images/service1.webp";
-import service2 from "../assets/images/service2.webp";
-import service3 from "../assets/images/service3.webp";
-import service4 from "../assets/images/service4.webp";
-import service5 from "../assets/images/service5.jpg";
-import service6 from "../assets/images/service6.webp";
-import service7 from "../assets/images/service7.webp";
+
 import background5 from "../assets/images/background5.webp";
+
+import project1 from "../assets/images/interbank3.jpg";
+import project2 from "../assets/images/interbank1.jpg";
+import project3 from "../assets/images/interbank2.jpg";
+import project4 from "../assets/images/aeropuerto1.jpg";
+import project5 from "../assets/images/aeropuerto2.webp";
+import project6 from "../assets/images/aeropuerto3.jpg";
+import project7 from "../assets/images/fridays1.jpg";
+import project8 from "../assets/images/hablabroaster.webp";
+import project9 from "../assets/images/papachos1.jpg";
+import project10 from "../assets/images/starbucks.jpg";
+import project11 from "../assets/images/mallsjl.webp";
+import project12 from "../assets/images/mallcomas.jpg";
+
+
 
 // Importa tus imágenes aquí
 import logo1 from "../assets/images/proveedor1.jpg";
@@ -35,6 +44,7 @@ import logo6 from "../assets/images/proveedor7.jpg";
 import logo7 from "../assets/images/proveedor8.png";
 import logo8 from "../assets/images/proveedor9.png";
 import logo9 from "../assets/images/proveedor10.png";
+import { i } from "framer-motion/client";
 
 // Array de logos movido fuera del componente
 const providerLogos = [
@@ -60,45 +70,60 @@ const providerLogos = [
   { src: logo7, alt: "Empresa G" },
 ];
 
-const ServiceCard = ({ image, title, description, delay }) => (
-  <motion.div
-    className="relative group h-[500px] rounded-2xl overflow-hidden shadow-xl cursor-pointer will-change-transform" // Añadido will-change-transform
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    // CAMBIO CLAVE: Una vez que aparece, no se repite
-    viewport={{ once: true, amount: 0.3 }}
-    // Duración ligeramente reducida para una sensación más ágil
-    transition={{ duration: 0.5, delay }}
-  >
-    {/* Imagen de fondo */}
-    <div
-      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-      style={{
-        backgroundImage: `url('${image}')`,
-      }}
-    ></div>
+const ServiceCard = ({ images, title, delay }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-    {/* Overlay con difuminado */}
-    <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-70 transition-all duration-300"></div>
+  useEffect(() => {
+    // Solo inicia el carrusel si está en hover
+    if (!isHovered) {
+      setCurrentImageIndex(0); // Resetea a la primera imagen cuando no hay hover
+      return;
+    }
 
-    {/* Contenido que aparece en hover */}
-    <div className="absolute inset-0 flex flex-col justify-end p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-      <h3 className="text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-        {title}
-      </h3>
-      <p className="text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200">
-        {description}
-      </p>
-    </div>
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 1300); // Cambia cada 1.3 segundos (más rápido)
 
-    {/* Título siempre visible */}
-    <div className="absolute bottom-6 left-6 text-white">
-      <h3 className="text-xl font-semibold group-hover:opacity-0 transition-opacity duration-300">
-        {title}
-      </h3>
-    </div>
-  </motion.div>
-);
+    return () => clearInterval(interval);
+  }, [isHovered, images.length]);
+
+  return (
+    <motion.div
+      className="relative group h-[400px] overflow-hidden shadow-xl cursor-pointer will-change-transform"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.5, delay }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => setIsHovered(!isHovered)}
+    >
+      {/* Imágenes de fondo con transición de desvanecimiento */}
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
+          style={{
+            backgroundImage: `url('${image}')`,
+            opacity: currentImageIndex === index ? 1 : 0,
+            transform: currentImageIndex === index ? 'scale(1.05)' : 'scale(1)',
+          }}
+        ></div>
+      ))}
+
+      {/* Overlay con difuminado - se oscurece más en hover */}
+      <div className={`absolute inset-0 bg-black transition-all duration-300 ${isHovered ? 'bg-opacity-65' : 'bg-opacity-10'}`}></div>
+
+      {/* Título centrado - solo aparece en hover */}
+      <div className={`absolute inset-0 flex items-center justify-center p-6 text-white transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+        <h3 className="text-2xl font-bold text-center">
+          {title}
+        </h3>
+      </div>
+    </motion.div>
+  );
+};
 
 const ProjectDetail = () => {
   // CLAVE: Estado para controlar el inicio de la animación
@@ -120,52 +145,71 @@ const ProjectDetail = () => {
     transition: { duration: 0.6 },
   };
 
-  // Datos de servicios
+  // Datos de servicios - Ahora cada servicio tiene un array de imágenes
   const services = [
+    
+
     {
-      image: service1,
-      title: "Elaboración de Proyectos de estructuras Metálicas",
-      description:
-        "Diseñamos y planificamos estructuras de acero para proyectos de construcción, garantizando la funcionalidad y seguridad.",
+      images: [project1, project2, project3],
+      title: "EDIFICIO INTERBANK",
     },
     {
-      image: service2,
-      title: "Elaboración de proyectos de carpintería metálica.",
-      description:
-        "Diseñamos y fabricamos elementos de carpintería metálica a medida, combinando estética y funcionalidad. Utilizando materiales de alta calidad y acabados precisos para complementar la arquitectura de cualquier espacio residencial, comercial o industrial.",
+      images: [project4, project5, project6],
+      title: "AMPLIACIÓN AEROPUERTO JORGE CHAVEZ - LIMA",
     },
     {
-      image: service3,
+      images: [project11],
+      title: "MALL AVENTURA PLAZA SJL",
+    },
+
+    {
+      images: [project12],
+      title: "MALL PLAZA COMAS",
+    },
+
+    {
+      images: [project7],
+      title: "FRIDAYS SEDE JOCKEY PLAZA",
+    },
+
+    {
+      images: [project10],
+      title: "STARBUCKS COFFEE",
+    },
+
+    {
+      images: [project9, project8],
+      title: "IMPLEMENTACIONES DE LOCALES: PAPACHOS Y HABLA BROASTER",
+    },
+    {
+      images: [],
+      title: "UTEC SEDE BARRANCO - LIMA",
+    },
+    {
+      images: [],
+      title: "LOCAL TANTA CAFE - LIMA",
+    },
+    {
+      images: [],
       title:
-        "Fabricación de plataformas, naves industriales, techos parabólicos, soportaría industrial.",
-      description:
-        "Ofrecemos soluciones de fabricación de estructuras metálicas de alta resistencia, ideales para el sector industrial. Cumpliendo con los más altos estándares de calidad.",
+        "COLEGIOS BICENTENARIOS I.E. 1235 UNIÓN LATINOAMERICANA",
     },
     {
-      image: service4,
-      title: "Galpones, bodegueras y almacenes.",
-      description:
-        "Especializados en la construcción de galpones, bodegas y almacenes, proporcionamos soluciones integrales que optimizan el espacio y la funcionalidad.",
+      images: [],
+      title: "COLEGIOS BICENTENARIOS - I.E. MANUEL GONZALES PRADA",
     },
     {
-      image: service5,
-      title: "Montaje de equipos para minería.",
-      description:
-        "Servicio de montaje y puesta en marcha de maquinaria y equipos pesados, específicamente para la industria minera.",
+      images: [],
+      title: "LOCALES: GRUPO DELOSI",
     },
     {
-      image: service6,
+      images: [],
       title:
-        "Elaboración de proyectos para el sector industrial,minero y centros comerciales",
-      description:
-        "Desarrollamos proyectos de ingeniería y construcción para los sectores industrial, minero y comercial, garantizando soluciones funcionales y seguras.",
-    },
-    {
-      image: service7,
-      title: "Mantenimiento y montaje de estructuras metálicas pesadas.",
-      description:
-        "Realizamos servicios integrales de mantenimiento preventivo y correctivo para preservar el valor de tus inversiones.",
-    },
+        "I.E. 8184 - SAN BENITO",
+    }
+    
+
+    
   ];
 
   // Datos para la sección de Foco de Especialización
@@ -209,9 +253,9 @@ const ProjectDetail = () => {
             className="absolute inset-0 z-0"
             style={{
               backgroundImage: `url(${background5})`,
-              backgroundSize: "cover", // Asegura que la imagen cubra todo el div sin estirarse
-              backgroundPosition: "center", // Centra la imagen en el div
-              filter: "blur(2px)", // Aplica un difuminado de 4 píxeles
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              filter: "blur(2px)",
             }}
           ></div>
 
@@ -273,7 +317,6 @@ const ProjectDetail = () => {
               {specializationFocus.map((focus, index) => (
                 <motion.div
                   key={index}
-                  // CLASES MODIFICADAS: Se eliminan border-l-4 y border-[#FFD500]
                   className="bg-[#252934] rounded-xl shadow-xl p-8 flex flex-col items-start h-full will-change-transform"
                   {...enterAnimationProps}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
@@ -300,27 +343,17 @@ const ProjectDetail = () => {
         </section>
 
         {/* Sección de servicios */}
-        <div className="bg-[#191A19]">
-          <div className="container mx-auto px-6 py-16 ">
+        <div className="bg-white">
+          <div className="container mx-auto px-6 py-16 max-w-[1400px]">
             {/* Título de Servicios: Aplicación de Animación Condicional */}
-            <motion.h2
-              className="text-2xl font-bold text-center text-white mb-12 will-change-transform"
-              {...enterAnimationProps}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              Nuestra experiencia y compromiso nos permiten ofrecer soluciones
-              personalizadas y de alta calidad que se adaptan a las necesidades
-              específicas de cada cliente.
-            </motion.h2>
+            
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services.map((service, index) => (
-                // ServiceCard ya tiene su propia animación optimizada
                 <ServiceCard
                   key={index}
-                  image={service.image}
+                  images={service.images}
                   title={service.title}
-                  description={service.description}
                   delay={index * 0.1}
                 />
               ))}
@@ -362,16 +395,11 @@ const ProjectDetail = () => {
                 {providerLogos.map((provider, i) => (
                   <div
                     key={i}
-                    // AJUSTE 1: Aumentar el ancho (w-56) y alto (h-36) de la caja del logo
-                    // También aumentamos ligeramente el padding si es necesario para el nuevo tamaño
                     className="flex-shrink-0 w-56 h-42 flex items-center justify-center px-3 py-4"
                   >
                     <img
                       src={provider.src}
                       alt={provider.alt}
-                      // AJUSTE 2 (Opcional): Podemos ajustar el tamaño de la imagen si 'h-full w-auto' no es suficiente,
-                      // o si queremos que ocupe más espacio en el nuevo contenedor más grande.
-                      // Por ejemplo: 'h-[90%] w-auto' o incluso un 'max-h-full max-w-full' si hay logos muy grandes.
                       className="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
                       loading="lazy"
                     />
@@ -407,7 +435,7 @@ const ProjectDetail = () => {
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 {/* Botón Principal (Amarillo/Blanco Sólido - Destaca sobre el fondo oscuro) */}
                 <Link
-                  to="/contact-page" // Enlace a tu formulario de cotización
+                  to="/contact-page"
                   className="rounded-lg bg-[#e5c524] px-8 py-3 text-lg font-semibold text-black shadow-lg transition duration-200 hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   Contactar Especialista
@@ -415,7 +443,7 @@ const ProjectDetail = () => {
 
                 {/* Botón Secundario (Outline o Color del Título) */}
                 <Link
-                  to="/projects-detail" // Enlace a tus proyectos
+                  to="/projects-detail"
                   className="rounded-lg border-2 border-[#e5c524] px-8 py-3 text-lg font-semibold leading-6 text-[#e5c524] transition duration-200 hover:bg-white hover:text-black"
                 >
                   Descubrir Servicios
@@ -425,7 +453,7 @@ const ProjectDetail = () => {
           </div>
         </div>
       </div>
-    </> // 3. Cierre del Fragmento
+    </>
   );
 };
 
