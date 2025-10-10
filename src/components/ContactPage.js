@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { CheckCircle, MapPin, Mail, Phone, Clock } from 'lucide-react';
 // -> IMPORTACIÓN CLAVE para el SEO
 import { Helmet } from 'react-helmet-async';
+import ContactFondo from '../assets/images/background-contactpage.webp';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -55,19 +56,19 @@ const ContactPage = () => {
           />
           {/* Reemplaza con tu URL real */}
           <link rel="canonical" href="https://aleyansac.com/contact-page" />
-          <link rel="preconnect" href="https://images.unsplash.com" />
+        
       </Helmet>
 
       {/* 3. Contenedor principal de la página */}
       <section 
         id="cotizar" 
         className="relative py-40 flex items-center bg-cover bg-center overflow-hidden min-h-screen"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1714504904786-b6732390b206?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}
+        style={{ backgroundImage: `url(${ContactFondo})` }}
       >
         {/* Capa borrosa y oscura */}
         <div 
           className="absolute inset-0 z-0 bg-gray-900 bg-opacity-70"
-          style={{ backdropFilter: "blur(8px)" }}
+          style={{ backdropFilter: "blur(4px)" }}
         ></div>
       
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
@@ -104,7 +105,7 @@ const ContactPage = () => {
             {/* Formulario de Cotización */}
             <motion.div
               className="bg-[#101c22] text-blue-500 rounded-2xl shadow-xl p-8 md:p-12"
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }} // <-- Cambiado a once: true
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -190,7 +191,7 @@ const ContactPage = () => {
             {/* Información de Contacto */}
             <motion.div
               className="bg-[#101c22] text-black rounded-2xl shadow-xl p-8 md:p-12 flex flex-col justify-between"
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5 }}
@@ -255,7 +256,7 @@ const ContactPage = () => {
               </motion.h3>
               <motion.p
                 className="text-center text-lg text-white mb-12 max-w-5xl mx-auto"
-                initial={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: -30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.5 }} // Cambiado a once: true
                 transition={{ duration: 0.6, delay: 0.2 }}

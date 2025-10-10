@@ -13,6 +13,7 @@ import service4 from '../assets/images/service4.webp';
 import service5 from '../assets/images/service5.jpg';
 import service6 from '../assets/images/service6.webp';
 import service7 from '../assets/images/service7.webp';
+import background4 from '../assets/images/background4.webp';
 
 const ServiceCard = ({ image, title, description, delay }) => (
   <motion.div
@@ -163,20 +164,17 @@ const ServicesDetail = () => {
         <div className="relative text-white py-40 overflow-hidden bg-gray-800">
           
           {/* Nuevo Elemento: Animación de Gradiente Sutil (GPU Accelerated) */}
-          <motion.div
-            className="absolute inset-0 z-0"
-            style={{ 
-              backgroundImage: 'linear-gradient(to right, #0b254eff, #334155)', // Colores de gradiente
-            }}
-            // Animación sutil de desplazamiento de fondo infinito
-            animate={{ backgroundPosition: ['0% 50%', '100% 50%'] }}
-            transition={{ 
-              ease: "linear", 
-              duration: 30, // Más lento para que no sea intrusivo
-              repeat: Infinity,
-              repeatType: "reverse"
-            }}
-          />
+          <div
+              className="absolute inset-0 z-0"
+              style={{
+                  backgroundImage: `url(${background4})`,
+                  backgroundSize: 'cover',         // Asegura que la imagen cubra todo el div sin estirarse
+                  backgroundPosition: 'center',    // Centra la imagen en el div
+                  filter: 'blur(2px)',            // Aplica un difuminado de 4 píxeles
+                
+              }}
+          >
+          </div>
           
           
 
@@ -218,13 +216,13 @@ const ServicesDetail = () => {
         <div className="bg-[#191A19]">
           <div className="container mx-auto px-6 py-16 ">
           {/* Título de Servicios: Aplicación de Animación Condicional */}
-          <motion.h2
+          {/* <motion.h2
             className="text-2xl font-bold text-center text-white mb-12 will-change-transform"
             {...enterAnimationProps}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             Nuestra experiencia y compromiso nos permiten ofrecer soluciones personalizadas y de alta calidad que se adaptan a las necesidades específicas de cada cliente.
-          </motion.h2>
+          </motion.h2> */}
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {services.map((service, index) => (
@@ -331,12 +329,12 @@ const ServicesDetail = () => {
               
               {/* Título de la CTA */}
               <h2 className="text-4xl font-bold tracking-tight text-white sm:text-4xl mb-6">
-                ¿Listo para realizar <span className="text-blue-600">tu proyecto con nosotros?</span>
+               Convierte tu idea en un <span className="text-blue-600"> proyecto sólido.</span>
               </h2>
               
               {/* Descripción */}
               <p className="mx-auto mt-4 max-w-3xl text-xl leading-8 text-gray-100">
-                Contáctanos y recibe una atención personalizada y una cotización a medida para tu empresa.
+                Nuestro equipo experto te brindará asesoría y una propuesta económica a la medida. Tu proyecto merece un inicio sin contratiempos.
               </p>
               
               {/* Contenedor de Botones */}
@@ -347,7 +345,7 @@ const ServicesDetail = () => {
                   to="/contact-page" // Enlace a tu formulario de cotización
                   className="rounded-lg bg-[#e5c524] px-8 py-3 text-lg font-semibold text-black shadow-lg transition duration-200 hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
-                  Solicitar Cotización
+                  Solicitar Asesoría
                 </Link>
                 
                 {/* Botón Secundario (Outline o Color del Título) */}
@@ -355,7 +353,7 @@ const ServicesDetail = () => {
                   to="/projects-detail" // Enlace a tus proyectos
                   className="rounded-lg border-2 border-[#e5c524] px-8 py-3 text-lg font-semibold leading-6 text-[#e5c524] transition duration-200 hover:bg-white hover:text-black"
                 >
-                  Ver Proyectos
+                  Portafolio de Obras
                 </Link>
               </div>
               

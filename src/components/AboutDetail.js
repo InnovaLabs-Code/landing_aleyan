@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import history from '../assets/images/history.webp';
 import about1 from '../assets/images/about1.webp';
 import about2 from '../assets/images/about2.webp';
+import background1 from '../assets/images/background2.webp';
 
 
 const AboutDetail = () => {
@@ -61,54 +62,61 @@ const AboutDetail = () => {
           {/* CAPA DE IMAGEN ELIMINADA: 
             Se eliminó el div que contenía la imagen de fondo de Unsplash
           */}
-          <motion.div
-                      className="absolute inset-0 z-0"
-                      style={{ 
-                        backgroundImage: 'linear-gradient(to right, #0b254eff, #334155)', // Colores de gradiente
-                      }}
-                      // Animación sutil de desplazamiento de fondo infinito
-                      animate={{ backgroundPosition: ['0% 50%', '100% 50%'] }}
-                      transition={{ 
-                        ease: "linear", 
-                        duration: 30, // Más lento para que no sea intrusivo
-                        repeat: Infinity,
-                        repeatType: "reverse"
-                      }}
-                    />
+          <div
+              className="absolute inset-0 z-0"
+              style={{
+                  backgroundImage: `url(${background1})`,
+                  backgroundSize: 'cover',         // Asegura que la imagen cubra todo el div sin estirarse
+                  backgroundPosition: 'center',    // Centra la imagen en el div
+                  filter: 'blur(2px)',            // Aplica un difuminado de 4 píxeles
+                
+              }}
+          >
+          </div>
 
                     
           {/* Capa de degradado MANTENIDA para efecto visual sutil si lo deseas, o ELIMINALA */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/10 to-transparent"></div> 
           
           <div className="relative container mx-auto px-6 text-center z-10">
-            
-            <motion.h1
-              className="text-5xl md:text-6xl font-extrabold mb-4"
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              
-              transition={{ duration: 0.8}}
-            >
-              Sobre Nosotros
-            </motion.h1>
-            <motion.p
-              className="text-xl text-gray-100 max-w-3xl mx-auto"
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Con más de 2 años de experiencia, somos tu socio confiable en la construcción de sueños sólidos.
-            </motion.p>
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-black font-semibold py-3 px-6 rounded-xl mt-8 hover:opacity-90 transition-all duration-300"
-              style={{ backgroundColor: '#ffd500' }}
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Volver al Inicio
-            </Link>
-          </div>
+    
+    <motion.h1
+      // CAMBIO 1: Cambiar a text-white para máximo contraste
+      className="text-5xl md:text-6xl font-extrabold mb-4 text-white" 
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8}}
+      
+      // CAMBIO 2: Aplicar sombra de texto para separarlo del fondo
+      style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}
+    >
+      Sobre Nosotros
+    </motion.h1>
+    
+    <motion.p
+      // CAMBIO 3: Usar text-gray-100 para el subtítulo (similar al blanco)
+      className="text-xl text-gray-100 max-w-3xl mx-auto"
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+
+      // CAMBIO 4: Aplicar sombra de texto sutil al párrafo
+      style={{ textShadow: '1px 1px 3px rgba(0, 0, 0, 0.6)' }}
+    >
+      Con más de 2 años de experiencia, somos tu socio confiable en la construcción de sueños sólidos.
+    </motion.p>
+    
+    <Link
+      to="/"
+      // Botón: Ya usas un color de fondo #ffd500 (Amarillo/Dorado)
+      // Aseguramos que el texto del botón sea negro para el contraste.
+      className="inline-flex items-center gap-2 text-black font-semibold py-3 px-6 rounded-xl mt-8 hover:opacity-90 transition-all duration-300"
+      style={{ backgroundColor: '#ffd500' }}
+    >
+      <ArrowLeft className="w-5 h-5" />
+      Volver al Inicio
+    </Link>
+</div>
         </div>
 
         {/* Sección de Historia */}
