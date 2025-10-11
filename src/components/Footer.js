@@ -1,7 +1,7 @@
 import React from 'react';
 import { Linkedin, Twitter, Instagram, Facebook, MapPin, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/images/logoaleyan2.webp'; 
+import logo from '../assets/images/logoaleyan3.webp'; 
 
 const Footer = () => {
   return (
@@ -11,11 +11,10 @@ const Footer = () => {
         <div className="flex flex-col md:text-left">
           
           <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="Logo Constructora Aleyan SAC" width={170} 
-    height={46} className="h-10 w-auto" />
+              <img src={logo} alt="Logo Constructora Aleyan SAC" className="w-44 h-12 object-contain"  />
             </Link>
           
-          <p className="text-sm leading-relaxed mb-6 py-2 text-gray-400">
+          <p className="text-sm leading-relaxed mb-6 py-2 text-white">
             Somos una empresa líder especializada en el diseño, fabricación y montaje de estructuras metálicas robustas y de alta calidad. 
           </p>
           <div className="flex md:justify-start space-x-4">

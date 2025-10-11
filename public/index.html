@@ -31,6 +31,27 @@
   "url": "https://www.aleyansac.com/"
 }
 </script>
+
+<script>
+    // Pequeño script para cargar CSS de forma asíncrona (no bloqueante)
+    function loadCSSAsync() {
+      // Busca todos los archivos link con rel="stylesheet"
+      var links = document.querySelectorAll('link[rel="stylesheet"]');
+      
+      // Aplica el patrón loadCSS a cada uno (aunque solo haya uno)
+      links.forEach(function(link) {
+        // Establece media="print" (no bloqueante) y usa onload para cambiar a "all"
+        link.media = 'print';
+        link.onload = function() {
+          link.media = 'all';
+        };
+      });
+    }
+
+    // Llama a la función justo antes del final del head
+    // Esto es ideal ya que el bundler ya ha inyectado el link del CSS.
+    loadCSSAsync(); 
+  </script>
   </head>
   <body class="bg-gray-50"> 
     <div id="root"></div>
