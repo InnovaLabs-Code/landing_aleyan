@@ -42,10 +42,6 @@ import project20 from "../assets/images/colegio7.webp";
 import project21 from "../assets/images/colegio8.webp";
 import project22 from "../assets/images/colegio9.webp";
 import project23 from "../assets/images/colegio10.webp";
-import project24 from "../assets/images/tanta1.webp";
-import project25 from "../assets/images/tanta2.webp";
-import project26 from "../assets/images/delosi1.webp";
-import project27 from "../assets/images/delosi2.webp";
 import project28 from "../assets/images/utec2.webp";
 import project29 from "../assets/images/utec3.webp";
 import project30 from "../assets/images/colegio11.webp";
@@ -229,12 +225,12 @@ const ProjectDetail = () => {
     },
     
     {
-      images: [project35, project24, project25],
+      images: [project35],
       title: "LOCAL TANTA CAFE - LIMA",
     },
     
     {
-      images: [project26, project27],
+      images: [],
       title: "LOCALES: GRUPO DELOSI",
     },
    
