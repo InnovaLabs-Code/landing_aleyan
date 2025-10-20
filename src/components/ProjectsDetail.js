@@ -63,7 +63,7 @@ import logo6 from "../assets/images/proveedor7.jpg";
 import logo7 from "../assets/images/proveedor8.png";
 import logo8 from "../assets/images/proveedor9.png";
 import logo9 from "../assets/images/proveedor10.png";
-import { i } from "framer-motion/client";
+
 
 // Array de logos movido fuera del componente
 const providerLogos = [
