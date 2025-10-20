@@ -38,10 +38,10 @@ const ServiceCard = ({ image, title, description, delay }) => (
     
     {/* Contenido que aparece en hover */}
     <div className="absolute inset-0 flex flex-col justify-end p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-      <h3 className="text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
+      <h3 className="text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
         {title}
       </h3>
-      <p className="text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200">
+      <p className="text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
         {description}
       </p>
     </div>

@@ -167,7 +167,7 @@ const HomeSection = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8 }}
                             >
-                                Nos preparamos <br /> para el <span className="text-blue-600">Futuro</span> {/* Color azul para "Futuro" */}
+                                Calidad y Solidez <br /> en cada <span className="text-blue-600">Proyecto</span> {/* Color azul para "Futuro" */}
                             </motion.h1>
                             <motion.p
                                 className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto md:mx-0 mb-12 drop-shadow-md" // Párrafo en un gris más claro para contraste
@@ -175,13 +175,13 @@ const HomeSection = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
-                                Le ofrecemos los mejores servicios de diseño arquitectónico y construcción, transformando ideas en estructuras sólidas y duraderas.
+                                Transformamos el metal en infraestructuras de calidad que contribuyen <br /> al desarrollo del país.
                             </motion.p>
                             <div className="flex flex-wrap justify-center md:justify-start gap-8 mt-8">
                                 {/* StatItems actualizados con los valores de la imagen */}
                                 <StatItem icon={Users} value="3" label={<>Años de<br/>Experiencia</>} delay={0.4} type="years" />
-                                <StatItem icon={Hammer} value="100" label={<>Proyectos<br/>Completados</>} delay={0.6} type="projects" />
-                                <StatItem icon={Award} value="50" label={<>Clientes<br/>Satisfechos</>} delay={0.8} type="clients" />
+                                <StatItem icon={Hammer} value="30" label={<>Proyectos<br/>Completados</>} delay={0.6} type="projects" />
+                                <StatItem icon={Award} value="25" label={<>Clientes<br/>Satisfechos</>} delay={0.8} type="clients" />
                             </div>
                             
                             {/* Botones "Nuestros Servicios" y "Ver Proyectos" */}
@@ -228,25 +228,25 @@ const HomeSection = () => {
                             <ReasonCard
                                 icon={CheckCircle}
                                 title="Calidad Inigualable"
-                                description="Comprometidos con los más altos estándares de construcción y materiales duraderos."
+                                description="Comprometidos con nuestro proceso de producción asegurando un resultado de excelente calidad."
                                 delay={0.1}
                             />
                             <ReasonCard
                                 icon={Award}
                                 title="Experiencia Comprobada"
-                                description="Más de 2 años en el sector, con un historial de proyectos exitosos y clientes satisfechos."
+                                description="Más de 2 años en el sector, con un historial de proyectos exitosos y nuestra cartera de clientes."
                                 delay={0.2}
                             />
                             <ReasonCard
                                 icon={Users}
                                 title="Equipo Profesional"
-                                description="Contamos con administradores, ingenieros y operarios altamente cualificados y dedicados."
+                                description="Nuestro equipo de trabajo está conformado por profesionales, técnicos y operarios altamente cualificados y dedicados."
                                 delay={0.3}
                             />
                             <ReasonCard
                                 icon={Lightbulb}
-                                title="Innovación y Sostenibilidad"
-                                description="Aplicamos las últimas tecnologías y prácticas ecológicas en cada proyecto."
+                                title="Adaptabilidad"
+                                description="Nos adaptamos a las necesidades específicas de cada socio y proyecto."
                                 delay={0.4}
                             />
                         </div>

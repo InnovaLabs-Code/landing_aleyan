@@ -163,7 +163,7 @@ const AboutDetail = () => {
                   </div>
                   <div className="text-center">
                     <Award className="w-12 h-12 text-blue-600 mx-auto mb-2" />
-                    <p className="text-2xl font-bold text-white">2+</p>
+                    <p className="text-2xl font-bold text-white">3+</p>
                     <p className="text-gray-300">Años de Experiencia</p>
                   </div>
                 </div>
@@ -181,13 +181,13 @@ const AboutDetail = () => {
                 transition={{ duration: 0.6 }}
                 className="will-change-transform" 
               >
-                <div className="flex items-center mb-6">  
+                <div className="flex items-center">  
                   <Target className="w-16 h-16 text-blue-600 mb-4 mr-4" />
                   <h3 className="text-4xl font-bold text-gray-800 mb-6">Nuestra Misión</h3>
                 </div>
                 <p className="text-gray-600 leading-relaxed text-lg">
-                  Transformar las ideas de nuestros clientes en realidades constructivas de alta calidad y sostenibles, ofreciendo soluciones innovadoras y a medida. Nos comprometemos a entregar proyectos con la máxima seguridad, durabilidad y eficiencia, optimizando consistentemente tiempos y costos a través de un equipo experto y la mejora continua.
-                </p>
+                 Brindamos servicio de fabricación, instalación, montaje y mantenimientos de estructuras metálicas con altos estándares de calidad, seguridad y precisión; a través de un equipo humano comprometido con la mejora continua, la responsabilidad social y la generación de valor para nuestros clientes.
+                 </p>
               </motion.div>
 
               <motion.div
@@ -234,12 +234,12 @@ const AboutDetail = () => {
                 {...animationProps} // Aplicación de props condicionales
                 transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <div className="flex items-center mb-6">  
+                <div className="flex items-center ">  
                   <Eye className="w-16 h-16 text-yellow-500 mb-4 mr-4" />
                   <h3 className="text-4xl font-bold text-gray-800 mb-6">Nuestra Visión</h3>
                 </div>
                 <p className="text-gray-600 leading-relaxed text-lg">
-                  Consolidarnos como la Constructora líder y referente nacional, reconocida por transformar el concepto de edificación a través de la innovación, calidad y sostenibilidad. Nuestro objetivo es ser el socio estratégico predilecto, impulsando el desarrollo de infraestructura segura, eficiente y con un profundo compromiso social en todo el Perú.
+                  Ser reconocidos el 2028, como el referente a nivel nacional e internacional en el sector construcción por nuestra contibución al desarrollo de infraestructuras metálicas seguras y eficientes.
                 </p>
               </motion.div>
             </div>

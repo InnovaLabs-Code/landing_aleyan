@@ -12,6 +12,8 @@ import logo7 from '../assets/images/client7.png';
 import logo8 from '../assets/images/client8.png';
 import logo9 from '../assets/images/client9.jpeg';
 import logo10 from '../assets/images/client10.svg';
+import logo11 from '../assets/images/client11.jpg';
+import logo12 from '../assets/images/client12.jpeg';
 
 // Array de logos movido fuera del componente
 const clientLogos = [
@@ -25,6 +27,8 @@ const clientLogos = [
   { src: logo8, alt: "Empresa H" },
   { src: logo9, alt: "Empresa I" },
   { src: logo10, alt: "Empresa J" },
+  { src: logo11, alt: "Empresa K" },
+  { src: logo12, alt: "Empresa L" },
   // Duplicar los logos para el efecto de bucle infinito
   { src: logo1, alt: "Empresa A" },
   { src: logo2, alt: "Empresa B" },
@@ -36,6 +40,8 @@ const clientLogos = [
   { src: logo8, alt: "Empresa H" },
   { src: logo9, alt: "Empresa I" },
   { src: logo10, alt: "Empresa J" },
+  { src: logo11, alt: "Empresa K" },
+  { src: logo12, alt: "Empresa L" },
 ];
 
 // Component no longer needed - using inline structure

@@ -31,6 +31,29 @@ import project9 from "../assets/images/papachos1.jpg";
 import project10 from "../assets/images/starbucks.jpg";
 import project11 from "../assets/images/mallsjl.webp";
 import project12 from "../assets/images/mallcomas.jpg";
+import project13 from "../assets/images/utec1.webp";
+import project14 from "../assets/images/colegio1.webp";
+import project15 from "../assets/images/colegio2.jpg";
+import project16 from "../assets/images/colegio3.jpg";
+import project17 from "../assets/images/colegio4.webp";
+import project18 from "../assets/images/colegio5.webp";
+import project19 from "../assets/images/colegio6.jpg";
+import project20 from "../assets/images/colegio7.webp";
+import project21 from "../assets/images/colegio8.webp";
+import project22 from "../assets/images/colegio9.webp";
+import project23 from "../assets/images/colegio10.webp";
+import project24 from "../assets/images/tanta1.webp";
+import project25 from "../assets/images/tanta2.webp";
+import project26 from "../assets/images/delosi1.webp";
+import project27 from "../assets/images/delosi2.webp";
+import project28 from "../assets/images/utec2.webp";
+import project29 from "../assets/images/utec3.webp";
+import project30 from "../assets/images/colegio11.webp";
+import project31 from "../assets/images/mega1.webp"; 
+import project32 from "../assets/images/mega2.webp";
+import project33 from "../assets/images/mega3.webp";
+import project34 from "../assets/images/mega4.webp";
+import project35 from "../assets/images/tanta3.webp";
 
 
 
@@ -97,7 +120,7 @@ const ServiceCard = ({ images, title, delay }) => {
       transition={{ duration: 0.5, delay }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => setIsHovered(!isHovered)}
+      // onClick={() => setIsHovered(!isHovered)}
     >
       {/* Imágenes de fondo con transición de desvanecimiento */}
       {images.map((image, index) => (
@@ -113,7 +136,7 @@ const ServiceCard = ({ images, title, delay }) => {
       ))}
 
       {/* Overlay con difuminado - se oscurece más en hover */}
-      <div className={`absolute inset-0 bg-black transition-all duration-300 ${isHovered ? 'bg-opacity-65' : 'bg-opacity-10'}`}></div>
+      <div className={`absolute inset-0 bg-black transition-all duration-300 ${isHovered ? 'bg-opacity-55' : 'bg-opacity-10'}`}></div>
 
       {/* Título centrado - solo aparece en hover */}
       <div className={`absolute inset-0 flex items-center justify-center p-6 text-white transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
@@ -142,7 +165,7 @@ const ProjectDetail = () => {
     initial: { opacity: 0, y: -30 },
     whileInView: isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
     viewport: { once: true, amount: 0.3 },
-    transition: { duration: 0.6 },
+    transition: { duration: 0.5 },
   };
 
   // Datos de servicios - Ahora cada servicio tiene un array de imágenes
@@ -156,6 +179,29 @@ const ProjectDetail = () => {
     {
       images: [project4, project5, project6],
       title: "AMPLIACIÓN AEROPUERTO JORGE CHAVEZ - LIMA",
+    },
+     {
+      images: [project31,project32,project33, project34],
+      title: "MEGA PLAZA ICA",
+    },
+    {
+      images: [project13, project28, project29],
+      title: "UTEC SEDE BARRANCO - LIMA",
+    },
+    {
+      images: [project14, project15, project16],
+      title:
+        "COLEGIOS BICENTENARIOS I.E. 1235 UNIÓN LATINOAMERICANA",
+    },
+    {
+      images: [ project23, project17, project18, project30],
+      title: "COLEGIOS BICENTENARIOS - I.E. MANUEL GONZALES PRADA",
+    },
+    
+    {
+      images: [project20, project21, project22],
+      title:
+        "I.E. 8184 - SAN BENITO",
     },
     {
       images: [project11],
@@ -181,32 +227,17 @@ const ProjectDetail = () => {
       images: [project9, project8],
       title: "IMPLEMENTACIONES DE LOCALES: PAPACHOS Y HABLA BROASTER",
     },
+    
     {
-      images: [],
-      title: "UTEC SEDE BARRANCO - LIMA",
-    },
-    {
-      images: [],
+      images: [project35, project24, project25],
       title: "LOCAL TANTA CAFE - LIMA",
     },
+    
     {
-      images: [],
-      title:
-        "COLEGIOS BICENTENARIOS I.E. 1235 UNIÓN LATINOAMERICANA",
-    },
-    {
-      images: [],
-      title: "COLEGIOS BICENTENARIOS - I.E. MANUEL GONZALES PRADA",
-    },
-    {
-      images: [],
+      images: [project26, project27],
       title: "LOCALES: GRUPO DELOSI",
     },
-    {
-      images: [],
-      title:
-        "I.E. 8184 - SAN BENITO",
-    }
+   
     
 
     
@@ -443,7 +474,7 @@ const ProjectDetail = () => {
 
                 {/* Botón Secundario (Outline o Color del Título) */}
                 <Link
-                  to="/projects-detail"
+                  to="/services-detail"
                   className="rounded-lg border-2 border-[#e5c524] px-8 py-3 text-lg font-semibold leading-6 text-[#e5c524] transition duration-200 hover:bg-white hover:text-black"
                 >
                   Descubrir Servicios
