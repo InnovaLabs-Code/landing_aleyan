@@ -103,7 +103,7 @@ const ContactPage = () => {
           >
             {/* Título principal de la página (H1) */}
             <h1 className="text-4xl lg:text-5xl font-extrabold mb-4 leading-tight text-white">
-              Liderando el camino en construcción de edificios y obras civiles
+              Liderando el camino en construcción de edificios y obras civiles.
             </h1>
             <div className="flex flex-wrap justify-center items-center gap-6 mt-6 text-white">
               <span className="flex items-center gap-2 text-sm md:text-base">
