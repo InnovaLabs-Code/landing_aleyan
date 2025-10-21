@@ -3,10 +3,12 @@ import { motion } from 'framer-motion';
 import { CheckCircle, MapPin, Mail, Phone, Clock } from 'lucide-react';
 // -> IMPORTACIÓN CLAVE para el SEO
 import { Helmet } from 'react-helmet-async';
+import emailjs from '@emailjs/browser';
 import ContactFondo from '../assets/images/background-contactpage.webp';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
+    ruc: '',
     name: '',
     email: '',
     phone: '',
@@ -26,21 +28,39 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Formulario enviado:', formData);
+    // console.log('Formulario enviado:', formData);
     
-    // NOTA: Se reemplaza alert() por un mensaje en el estado de React
-    setFormMessage({ type: 'success', text: '¡Gracias! Tu solicitud ha sido enviada exitosamente. Nos pondremos en contacto contigo pronto.' });
+    // // NOTA: Se reemplaza alert() por un mensaje en el estado de React
+    // setFormMessage({ type: 'success', text: '¡Gracias! Tu solicitud ha sido enviada exitosamente. Nos pondremos en contacto contigo pronto.' });
     
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: ''
+    // setFormData({
+    //   name: '',
+    //   email: '',
+    //   phone: '',
+    //   service: '',
+    //   message: ''
+    // });
+    
+    // // Ocultar el mensaje después de 5 segundos
+    // setTimeout(() => setFormMessage(null), 5000);
+    // 📤 Enviar correo con EmailJS
+    emailjs.send(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+      formData,
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY   // ← reemplaza con tu Public Key
+    )
+    .then(() => {
+      setFormMessage({ type: 'success', text: '✅ ¡Gracias! Tu solicitud ha sido enviada correctamente.' });
+      setFormData({ ruc: '', name: '', email: '', phone: '', service: '', message: '' });
+      setTimeout(() => setFormMessage(null), 5000);
+    })
+    .catch((error) => {
+      console.error('Error al enviar:', error);
+      setFormMessage({ type: 'error', text: '❌ Hubo un error al enviar tu mensaje. Inténtalo más tarde.' });
+      setTimeout(() => setFormMessage(null), 5000);
     });
-    
-    // Ocultar el mensaje después de 5 segundos
-    setTimeout(() => setFormMessage(null), 5000);
+  
   };
 
 
@@ -175,9 +195,9 @@ const ContactPage = () => {
                     className="bg-white border border-gray-300 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300"
                   >
                     <option value="">Seleccione su servicio</option>
-                    <option value="Construcción Residencial">Elaboración de proyectos de estructuras métalicas</option>
-                    <option value="Desarrollo Comercial">Elaboración de proyectos de carpinteria metálica</option>
-                    <option value="Proyectos Industriales">Mantenimiento y montaje de estructuras métalicas pesadas</option>
+                    <option value="Proyectos de estructuras métalicas">Elaboración de proyectos de estructuras métalicas</option>
+                    <option value="Proyectos de carpinteria metálica">Elaboración de proyectos de carpinteria metálica</option>
+                    <option value="Mantenimiento y montaje de estructuras métalicas pesadas">Mantenimiento y montaje de estructuras métalicas pesadas</option>
                     <option value="Otro">Otro</option>
                   </select>
                 </div>
