@@ -17,7 +17,7 @@ import background4 from '../assets/images/background4.webp';
 
 const ServiceCard = ({ image, title, description, delay }) => (
   <motion.div
-    className="relative group h-[500px] rounded-2xl overflow-hidden shadow-xl cursor-pointer will-change-transform" // Añadido will-change-transform
+    className="relative group h-[600px] rounded-2xl overflow-hidden shadow-xl cursor-pointer will-change-transform" // Añadido will-change-transform
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     // CAMBIO CLAVE: Una vez que aparece, no se repite
@@ -88,30 +88,31 @@ const ServicesDetail = () => {
       description: 'Diseñamos y fabricamos elementos de carpintería metálica a medida, combinando estética y funcionalidad. Utilizando materiales de alta calidad y acabados precisos para complementar la arquitectura de cualquier espacio residencial, comercial o industrial.'
     },
     {
-      image: service3,
-      title: 'Fabricación de plataformas, naves industriales, techos parabólicos, soportaría industrial.',
-      description: 'Ofrecemos soluciones de fabricación de estructuras metálicas de alta resistencia, ideales para el sector industrial. Cumpliendo con los más altos estándares de calidad.'
-    },
-    {
-      image: service4,
-      title: 'Galpones, bodegueras y almacenes.',
-      description: 'Especializados en la construcción de galpones, bodegas y almacenes, proporcionamos soluciones integrales que optimizan el espacio y la funcionalidad.'
-    },
-    {
-      image: service5,
-      title: 'Montaje de equipos para minería.',
-      description: 'Servicio de montaje y puesta en marcha de maquinaria y equipos pesados, específicamente para la industria minera.'
-    },
-    {
-      image: service6,
-      title: 'Elaboración de proyectos para el sector industrial,minero y centros comerciales',
-      description: 'Desarrollamos proyectos de ingeniería y construcción para los sectores industrial, minero y comercial, garantizando soluciones funcionales y seguras.'
-    },
-    {
       image: service7,
       title: 'Mantenimiento y montaje de estructuras metálicas pesadas.',
       description: 'Realizamos servicios integrales de mantenimiento preventivo y correctivo para preservar el valor de tus inversiones.'
-    }
+    },
+    // {
+    //   image: service3,
+    //   title: 'Fabricación de plataformas, naves industriales, techos parabólicos, soportaría industrial.',
+    //   description: 'Ofrecemos soluciones de fabricación de estructuras metálicas de alta resistencia, ideales para el sector industrial. Cumpliendo con los más altos estándares de calidad.'
+    // },
+    // {
+    //   image: service4,
+    //   title: 'Galpones, bodegueras y almacenes.',
+    //   description: 'Especializados en la construcción de galpones, bodegas y almacenes, proporcionamos soluciones integrales que optimizan el espacio y la funcionalidad.'
+    // },
+    // {
+    //   image: service5,
+    //   title: 'Montaje de equipos para minería.',
+    //   description: 'Servicio de montaje y puesta en marcha de maquinaria y equipos pesados, específicamente para la industria minera.'
+    // },
+    // {
+    //   image: service6,
+    //   title: 'Elaboración de proyectos para el sector industrial,minero y centros comerciales',
+    //   description: 'Desarrollamos proyectos de ingeniería y construcción para los sectores industrial, minero y comercial, garantizando soluciones funcionales y seguras.'
+    // },
+    
   ];
 
   // Datos para la nueva sección de proceso
@@ -224,7 +225,7 @@ const ServicesDetail = () => {
             Nuestra experiencia y compromiso nos permiten ofrecer soluciones personalizadas y de alta calidad que se adaptan a las necesidades específicas de cada cliente.
           </motion.h2> */}
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6">
             {services.map((service, index) => (
               // ServiceCard ya tiene su propia animación optimizada
               <ServiceCard

@@ -17,6 +17,7 @@ const ContactPage = () => {
   const [formMessage, setFormMessage] = useState(null); // Estado para mostrar el mensaje al usuario
 
   const handleChange = (e) => {
+    
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -126,13 +127,27 @@ const ContactPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input
                     type="text"
+                    name="ruc"
+                    value={formData.ruc}
+                    onChange={handleChange}
+                    placeholder="RUC"
+                    className="bg-white border border-gray-300 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300"
+                    required
+                    inputMode="numeric"  maxLength={11}
+                    
+                  />
+                  <input
+                    type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Nombre Completo"
+                    placeholder="Razon Social"
                     className="bg-white border border-gray-300 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300"
                     required
                   />
+                  
+                </div>
+                <div className="grid grid-cols-1  gap-4">
                   <input
                     type="email"
                     name="email"
@@ -160,10 +175,9 @@ const ContactPage = () => {
                     className="bg-white border border-gray-300 rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300"
                   >
                     <option value="">Seleccione su servicio</option>
-                    <option value="Construcción Residencial">Construcción Residencial</option>
-                    <option value="Desarrollo Comercial">Desarrollo Comercial</option>
-                    <option value="Proyectos Industriales">Proyectos Industriales</option>
-                    <option value="Remodelaciones y Ampliaciones">Remodelaciones y Ampliaciones</option>
+                    <option value="Construcción Residencial">Elaboración de proyectos de estructuras métalicas</option>
+                    <option value="Desarrollo Comercial">Elaboración de proyectos de carpinteria metálica</option>
+                    <option value="Proyectos Industriales">Mantenimiento y montaje de estructuras métalicas pesadas</option>
                     <option value="Otro">Otro</option>
                   </select>
                 </div>
