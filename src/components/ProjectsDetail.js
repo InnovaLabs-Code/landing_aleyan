@@ -10,6 +10,7 @@ import {
   HardHat,
   Home,
   Factory,
+  Building2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -229,10 +230,10 @@ const ProjectDetail = () => {
       title: "LOCAL TANTA CAFE - LIMA",
     },
     
-    {
-      images: [],
-      title: "LOCALES: GRUPO DELOSI",
-    },
+    // {
+    //   images: [],
+    //   title: "LOCALES: GRUPO DELOSI",
+    // },
    
     
 
@@ -252,8 +253,14 @@ const ProjectDetail = () => {
       icon: Home,
     },
     {
+      title: "Colegios y Edificios Multifamiliares",
+      desc: "Diseño y desarrollo integral de infraestructuras metálicas educativas seguras y funcionales, y proyectos residenciales multifamiliares de alta densidad que maximizan la eficiencia del espacio.",
+      icon: Building2,
+      
+    },
+    {
       title: "Proyectos Mineros y Energía",
-      desc: "Fabricación y montaje de estructuras especializadas para plantas de procesamiento, cumpliendo normas de seguridad rigurosas.",
+      desc: "Como meta proxima nos proyectamos a la fabricación y montaje de estructuras especializadas para plantas de procesamiento, cumpliendo normas de seguridad rigurosas.",
       icon: HardHat,
     },
   ];
@@ -322,7 +329,7 @@ const ProjectDetail = () => {
 
         {/* NUEVA SECCIÓN 1: FOCO DE ESPECIALIZACIÓN (Reemplaza a "Proceso") */}
         <section className="bg-gray-100 py-16 sm:py-10">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-8xl px-6 lg:px-8">
             {/* Título */}
             <motion.div
               className="mx-auto max-w-3xl text-center mb-10 will-change-transform"
@@ -340,7 +347,7 @@ const ProjectDetail = () => {
             </motion.div>
 
             {/* Contenedor de las tarjetas de especialización */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               {specializationFocus.map((focus, index) => (
                 <motion.div
                   key={index}
@@ -403,7 +410,7 @@ const ProjectDetail = () => {
             </motion.h2>
             {/* Descripción */}
             <p className="mx-auto mt-4 max-w-3xl text-xl leading-8 text-black text-center mb-6">
-              Elegimos a los mejores del mercado para asegurar la durabilidad y
+              Elegimos a los mejores proveedores del mercado para asegurar la durabilidad y
               la resistencia de todas nuestras estructuras.
             </p>
             <div className="max-w-6xl mx-auto flex whitespace-nowrap px-6 overflow-hidden">

@@ -66,7 +66,7 @@ const Clients = () => {
           viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.6 }}
         >
-          Nuestros <span className="text-blue-600">Socios Estratégicos</span>
+          Nuestra <span className="text-blue-600">Cartera de Clientes</span>
         </motion.h2>
         <div className="max-w-6xl mx-auto flex whitespace-nowrap px-4 overflow-hidden">
           <motion.div

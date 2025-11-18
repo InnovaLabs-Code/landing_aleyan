@@ -1,7 +1,9 @@
 import React from 'react';
-import { Linkedin, Twitter, Instagram, Facebook, MapPin, Mail, Phone } from 'lucide-react';
+import { Linkedin, Twitter, Instagram, Facebook, Youtube, MapPin, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/logoaleyan3.webp'; 
+
+
 
 const Footer = () => {
   return (
@@ -19,20 +21,21 @@ const Footer = () => {
           </p>
           <div className="flex md:justify-start space-x-4">
             {/* Íconos de redes sociales */}
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300" // CLAVE: El lector de pantalla leerá esto
+            <a href="https://www.linkedin.com/in/aleyan-sac-5b5019381/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300" // CLAVE: El lector de pantalla leerá esto
   aria-label="Perfil de LinkedIn de Constructora Aleyan">
               <Linkedin className="w-5 h-5" />
             </a>
-            {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
-              <Twitter className="w-5 h-5" />
-            </a> */}
-            {/* <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
-              <Instagram className="w-5 h-5" />
-            </a> */}
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300" // CLAVE: El lector de pantalla leerá esto
+             <a href="https://www.facebook.com/people/Aleyan-Sac/61582829485004/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300" // CLAVE: El lector de pantalla leerá esto
   aria-label="Página de Facebook de Constructora Aleyan">
               <Facebook className="w-5 h-5" />
             </a>
+            <a href="https://www.instagram.com/constructora.aleyan.pe/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a href="https://www.youtube.com/@ALEYAN-t8o" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <Youtube className="w-5 h-5" />
+            </a>  
+            
           </div>
         </div>
 
@@ -41,12 +44,12 @@ const Footer = () => {
           <h2 className="text-lg font-semibold text-white mb-2">Oficina</h2>
           <p className="flex items-center gap-2 text-sm leading-relaxed mb-4 text-gray-400">
             <MapPin className="w-4 h-4 text-gray-400" />
-            Condominio Residencial Valle Alto, Oficina G201, Puente Piedra
+            Condominio Residencial Valle Alto, Oficinas, Puente Piedra
           </p>
           <h2 className="text-lg font-semibold text-white mb-2">Taller</h2>
           <p className="flex items-center gap-2 text-sm leading-relaxed mb-4 text-gray-400">
             <MapPin className="w-4 h-4 text-gray-400" />
-            Jr. La Honestidad 8086 Urb. Residencial Los Olivos, Lima, Perú.
+            Los geranios 253, Puente Piedra 15116, Lima, Perú.
           </p>
         </div>
 
@@ -78,7 +81,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="border-t border-gray-600 mt-6 pt-5 text-center text-white text-sm">
-        <p>&copy; {new Date().getFullYear()} Constructora Aleyan SAC. Todos los derechos reservados.</p>
+        <p>&copy; {new Date().getFullYear()} Constructora Aleyan SAC. Todos los derechos reservados. Desarrollado por MarzDev</p>
       </div>
     </footer>
   );

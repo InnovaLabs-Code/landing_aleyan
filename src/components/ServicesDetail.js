@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'; // Importar useState y useEffect
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -13,47 +13,93 @@ import service4 from '../assets/images/service4.webp';
 import service5 from '../assets/images/service5.jpg';
 import service6 from '../assets/images/service6.webp';
 import service7 from '../assets/images/service7.webp';
+import service8 from '../assets/images/service8.webp';
+import service9 from '../assets/images/service9.webp';
+import service10 from '../assets/images/service10.webp';
+import service11 from '../assets/images/service11.webp';
+import service12 from '../assets/images/service12.webp';
+import service14 from '../assets/images/service14.webp';
+
 import background4 from '../assets/images/background4.webp';
 
-const ServiceCard = ({ image, title, description, delay }) => (
-  <motion.div
-    className="relative group h-[600px] rounded-2xl overflow-hidden shadow-xl cursor-pointer will-change-transform" // Añadido will-change-transform
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    // CAMBIO CLAVE: Una vez que aparece, no se repite
-    viewport={{ once: true, amount: 0.3 }}
-    // Duración ligeramente reducida para una sensación más ágil
-    transition={{ duration: 0.5, delay }}
-  >
-    {/* Imagen de fondo */}
-    <div
-      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-      style={{
-        backgroundImage: `url('${image}')`
-      }}
-    ></div>
+const ServiceCard = ({ images, title, description, delay }) => {
+    // 1. Estado para rastrear el índice de la imagen actual
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    // 2. Estado para saber si el mouse está sobre la tarjeta
+    const [isHovered, setIsHovered] = useState(false);
     
-    {/* Overlay con difuminado */}
-    <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-70 transition-all duration-300"></div>
-    
-    {/* Contenido que aparece en hover */}
-    <div className="absolute inset-0 flex flex-col justify-end p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-      <h3 className="text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
-        {title}
-      </h3>
-      <p className="text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
-        {description}
-      </p>
-    </div>
-    
-    {/* Título siempre visible */}
-    <div className="absolute bottom-6 left-6 text-white">
-      <h3 className="text-xl font-semibold group-hover:opacity-0 transition-opacity duration-300">
-        {title}
-      </h3>
-    </div>
-  </motion.div>
-);
+    // 3. Efecto para cambiar la imagen automáticamente al hacer hover
+    useEffect(() => {
+        let intervalId;
+
+        if (isHovered && images.length > 1) {
+            // Inicia la rotación si hay hover y más de una imagen
+            intervalId = setInterval(() => {
+                setCurrentImageIndex(prevIndex => 
+                    (prevIndex + 1) % images.length // Rota al siguiente índice
+                );
+            }, 1200); // 1.2 segundos para la visibilidad de cada imagen (ajusta este valor)
+        } else {
+            // Reinicia y limpia al salir del hover
+            setCurrentImageIndex(0); 
+            clearInterval(intervalId);
+        }
+
+        return () => clearInterval(intervalId); // Función de limpieza
+    }, [isHovered, images.length]);
+
+    return (
+        <motion.div
+            className="relative group h-[600px] rounded-2xl overflow-hidden shadow-xl cursor-pointer will-change-transform"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            {/* Imágenes de fondo con transición de desvanecimiento (Tu implementación) */}
+            {images.map((image, index) => (
+                <div
+                    key={index}
+                    // Usamos transition-opacity para el desvanecimiento. duration-1000 es la duración total del fade.
+                    className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+                    style={{
+                        backgroundImage: `url('${image}')`,
+                        // Si es la imagen actual, opacidad 1, si no, 0.
+                        opacity: currentImageIndex === index ? 1 : 0,
+                        // Añadimos la transición de zoom para la imagen activa (escala del 1.05)
+                        transform: currentImageIndex === index && isHovered 
+                            ? 'scale(1.08)' // Ligeramente más zoom al hacer hover en la imagen activa
+                            : 'scale(1)',
+                        // Aplicamos la transición CSS a la propiedad transform
+                        transition: 'opacity 1s ease-in-out, transform 0.5s ease', 
+                        // Asegura que la imagen activa esté encima de las invisibles
+                        zIndex: currentImageIndex === index ? 10 : 5, 
+                    }}
+                ></div>
+            ))}
+            
+            {/* Overlay y Contenido (Z-index más alto para asegurar visibilidad) */}
+            <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-70 transition-all duration-300 z-20"></div>
+            
+            <div className="absolute inset-0 flex flex-col justify-end p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 z-30">
+                <h3 className="text-2xl font-bold mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
+                    {title}
+                </h3>
+                <p className="text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 ">
+                    {description}
+                </p>
+            </div>
+            
+            <div className="absolute bottom-6 left-6 text-white z-30">
+                <h3 className="text-xl font-semibold group-hover:opacity-0 transition-opacity duration-300">
+                    {title}
+                </h3>
+            </div>
+        </motion.div>
+    );
+};
 
 const ServicesDetail = () => {
   // CLAVE: Estado para controlar el inicio de la animación
@@ -78,17 +124,17 @@ const ServicesDetail = () => {
   // Datos de servicios
   const services = [
     {
-      image: service1,
+      images: [service1, service8, service3,service9],
       title: 'Elaboración de Proyectos de estructuras Metálicas',
       description: 'Diseñamos y planificamos estructuras de acero para proyectos de construcción, garantizando la funcionalidad y seguridad.'
     },
     {
-      image: service2,
+      images: [service2,service6, service12,service10],
       title: 'Elaboración de proyectos de carpintería metálica.',
       description: 'Diseñamos y fabricamos elementos de carpintería metálica a medida, combinando estética y funcionalidad. Utilizando materiales de alta calidad y acabados precisos para complementar la arquitectura de cualquier espacio residencial, comercial o industrial.'
     },
     {
-      image: service7,
+      images: [service7, service4, service5,service14],
       title: 'Mantenimiento y montaje de estructuras metálicas pesadas.',
       description: 'Realizamos servicios integrales de mantenimiento preventivo y correctivo para preservar el valor de tus inversiones.'
     },
@@ -143,13 +189,15 @@ const ServicesDetail = () => {
       "Seguridad Industrial y Cumplimiento de Protocolos",
       "Ingeniería de Detalle con Modelado BIM",
       "Equipo Certificado y Especializado en Montaje",
+      "Servicio excepcional al cliente",
+      "Soporte Postventa"
   ];
 
   return (
     // 1. Abrir el Fragmento de React
     <>
       <Helmet>
-        <title>Servicios de Estructuras Metálicas y Montaje | Constructora Aleyan S.A.C.</title>
+        <title>Servicios de Estructuras Metálicas y Carpintería Metálica | Constructora Aleyan S.A.C.</title>
         <meta 
           name="description" 
           content="Somos líderes en la elaboración de proyectos, fabricación, montaje y mantenimiento de estructuras metálicas para los sectores industrial y minero." 
@@ -227,15 +275,15 @@ const ServicesDetail = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6">
             {services.map((service, index) => (
-              // ServiceCard ya tiene su propia animación optimizada
-              <ServiceCard
-                key={index}
-                image={service.image}
-                title={service.title}
-                description={service.description}
-                delay={index * 0.1}
-              />
-            ))}
+    <ServiceCard
+        key={index}
+        // CAMBIO: Pasa 'images' en lugar de 'image'
+        images={service.images} 
+        title={service.title}
+        description={service.description}
+        delay={index * 0.1}
+    />
+))}
           </div>
         </div>
         </div>
@@ -294,7 +342,7 @@ const ServicesDetail = () => {
             </motion.h2>
 
             {/* Lista de Beneficios en 2 Columnas */}
-            <div className="mx-auto max-w-4xl">
+            <div className="mx-auto max-w-6xl">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-4">
                 {benefits.map((benefit, index) => (
                   <motion.div

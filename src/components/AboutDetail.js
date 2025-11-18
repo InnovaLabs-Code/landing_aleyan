@@ -103,7 +103,7 @@ const AboutDetail = () => {
       // CAMBIO 4: Aplicar sombra de texto sutil al párrafo
       style={{ textShadow: '1px 1px 3px rgba(0, 0, 0, 0.6)' }}
     >
-      Con más de 2 años de experiencia, somos tu socio confiable en la construcción de sueños sólidos.
+      Con más de 3 años de experiencia, somos tu socio confiable en la construcción de sueños sólidos.
     </motion.p>
     
     <Link

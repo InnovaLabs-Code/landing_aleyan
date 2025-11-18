@@ -103,7 +103,7 @@ const ContactPage = () => {
           >
             {/* Título principal de la página (H1) */}
             <h1 className="text-4xl lg:text-5xl font-extrabold mb-4 leading-tight text-white">
-              Liderando el camino en construcción de edificios y obras civiles.
+              Liderando el camino en construcción metal mecánico.
             </h1>
             <div className="flex flex-wrap justify-center items-center gap-6 mt-6 text-white">
               <span className="flex items-center gap-2 text-sm md:text-base">
@@ -133,7 +133,7 @@ const ContactPage = () => {
             >
               <h3 className="text-2xl font-bold mb-2">Solicitar un presupuesto</h3>
               <p className="text-sm text-white mb-8">
-                El control total sobre los productos nos permite ofrecer a nuestros clientes la mejor calidad en precios y servicios. Estamos muy orgullosos de todo lo que hacemos en Aleyan SAC.
+                El control total sobre el proceso de fabricación nos permite ofrecer a nuestros clientes la mejor calidad en precios y servicios. Estamos muy orgullosos de todo lo que hacemos en Aleyan SAC.
               </p>
               
               {/* Mensaje de confirmación del formulario */}
@@ -241,7 +241,7 @@ const ContactPage = () => {
                   </div>
                   <p className="text-sm text-white pl-7">
                     Oficina: Condominio Residencial Valle Alto, Oficina G201, Puente Piedra<br/>
-                    Taller: Jr. La Honestidad 8086 Urb. Residencial Los Olivos, Lima, Perú
+                    Taller: Los geranios 253, Puente Piedra 15116, Lima, Perú.
                   </p>
                 </div>
       
@@ -267,8 +267,8 @@ const ContactPage = () => {
                   </div>
                   
                   <p className="text-sm text-white pl-7">
-                    Lunes - Viernes: 08:00 AM - 05:30 PM<br />
-                    Sábado: 08:00 AM - 01:00 PM
+                    Lunes - Viernes: 07:30 AM - 05:30 PM<br />
+                    Sábado: 07:30 AM - 12:00 PM
                   </p>
                 </div>
           

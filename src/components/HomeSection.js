@@ -151,7 +151,9 @@ const HomeSection = () => {
                     <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat -z-10"
                         style={{
-                            backgroundImage: "url('https://images.unsplash.com/photo-1758218210743-8a5c47492bdf?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" // Imagen de construcción moderna (reemplaza con tu URL o '/images/fondo_landing.jpg')
+                            // backgroundImage: "url('https://images.unsplash.com/photo-1758218210743-8a5c47492bdf?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" // Imagen de construcción moderna (reemplaza con tu URL o '/images/fondo_landing.jpg')
+                             backgroundImage: "url('https://images.unsplash.com/photo-1641219996730-b21ca5b26d26?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" // Imagen de construcción moderna (reemplaza con tu URL o '/images/fondo_landing.jpg')
+                      
                         }}
                     ></div>
 
@@ -216,7 +218,7 @@ const HomeSection = () => {
                             ¿ Por qué elegir <span className="text-blue-600">Constructora Aleyan S.A.C </span>?
                         </motion.h2>
                         <motion.p
-                            className="text-center text-lg text-white mb-10 max-w-5xl mx-auto"
+                            className="text-center text-xl text-white mb-10 max-w-6xl mx-auto"
                             initial={{ opacity: 0, y: -20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.5 }}
@@ -234,7 +236,7 @@ const HomeSection = () => {
                             <ReasonCard
                                 icon={Award}
                                 title="Experiencia Comprobada"
-                                description="Más de 2 años en el sector, con un historial de proyectos exitosos y nuestra cartera de clientes."
+                                description="Más de 3 años en el sector, con un historial de proyectos exitosos y nuestra cartera de clientes."
                                 delay={0.2}
                             />
                             <ReasonCard
@@ -245,7 +247,7 @@ const HomeSection = () => {
                             />
                             <ReasonCard
                                 icon={Lightbulb}
-                                title="Adaptabilidad"
+                                title="Adaptabilidad y Tecnología"
                                 description="Nos adaptamos a las necesidades específicas de cada socio y proyecto."
                                 delay={0.4}
                             />
@@ -266,7 +268,7 @@ const HomeSection = () => {
                             Nuestro <span className="text-blue-600">Proceso de Trabajo</span>
                         </motion.h2>
                         <motion.p
-                            className="text-center text-lg text-black mb-12 max-w-5xl mx-auto"
+                            className="text-center text-xl text-black mb-12 max-w-5xl mx-auto"
                             initial={{ opacity: 0, y: -20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.5 }}
