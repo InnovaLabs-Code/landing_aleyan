@@ -15,45 +15,25 @@ import logo10 from '../assets/images/client10.svg';
 import logo11 from '../assets/images/client11.jpg';
 import logo12 from '../assets/images/client12.jpeg';
 
-// Array de logos movido fuera del componente
-const clientLogos = [
-  { src: logo1, alt: "Empresa A" },
-  { src: logo2, alt: "Empresa B" },
-  { src: logo3, alt: "Empresa C" },
-  { src: logo4, alt: "Empresa D" },
-  { src: logo5, alt: "Empresa E" },
-  { src: logo6, alt: "Empresa F" },
-  { src: logo7, alt: "Empresa G" },
-  { src: logo8, alt: "Empresa H" },
-  { src: logo9, alt: "Empresa I" },
-  { src: logo10, alt: "Empresa J" },
-  { src: logo11, alt: "Empresa K" },
-  { src: logo12, alt: "Empresa L" },
-  // Duplicar los logos para el efecto de bucle infinito
-  { src: logo1, alt: "Empresa A" },
-  { src: logo2, alt: "Empresa B" },
-  { src: logo3, alt: "Empresa C" },
-  { src: logo4, alt: "Empresa D" },
-  { src: logo5, alt: "Empresa E" },
-  { src: logo6, alt: "Empresa F" },
-  { src: logo7, alt: "Empresa G" },
-  { src: logo8, alt: "Empresa H" },
-  { src: logo9, alt: "Empresa I" },
-  { src: logo10, alt: "Empresa J" },
-  { src: logo11, alt: "Empresa K" },
-  { src: logo12, alt: "Empresa L" },
+// 1. Definimos los clientes y sus dimensiones REALES una sola vez
+// NOTA: Reemplaza los valores numéricos (width, height) por el tamaño real de cada archivo imagen
+const uniqueClients = [
+  { src: logo1, alt: "Empresa A", width: 200, height: 100 },
+  { src: logo2, alt: "Empresa B", width: 150, height: 80 },
+  { src: logo3, alt: "Empresa C", width: 180, height: 90 },
+  { src: logo4, alt: "Empresa D", width: 200, height: 100 },
+  { src: logo5, alt: "Empresa E", width: 160, height: 80 },
+  { src: logo6, alt: "Empresa F", width: 190, height: 95 },
+  { src: logo7, alt: "Empresa G", width: 200, height: 100 },
+  { src: logo8, alt: "Empresa H", width: 170, height: 85 },
+  { src: logo9, alt: "Empresa I", width: 210, height: 105 },
+  { src: logo10, alt: "Empresa J", width: 140, height: 70 },
+  { src: logo11, alt: "Empresa K", width: 180, height: 90 },
+  { src: logo12, alt: "Empresa L", width: 200, height: 100 },
 ];
 
-// Component no longer needed - using inline structure
-// const ClientLogo = ({ src, alt }) => (
-//   <div className="flex-shrink-0 w-48 h-24 flex items-center justify-center p-4">
-//     <img 
-//       src={src} 
-//       alt={alt} 
-//       className="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
-//     />
-//   </div>
-// );
+// 2. Generamos el array final duplicado automáticamente para el bucle infinito
+const clientLogos = [...uniqueClients, ...uniqueClients];
 
 const Clients = () => {
   return (
@@ -68,6 +48,7 @@ const Clients = () => {
         >
           Nuestra <span className="text-blue-600">Cartera de Clientes</span>
         </motion.h2>
+        
         <div className="max-w-6xl mx-auto flex whitespace-nowrap px-4 overflow-hidden">
           <motion.div
             className="flex space-x-4"
@@ -86,6 +67,8 @@ const Clients = () => {
                 <img 
                   src={client.src} 
                   alt={client.alt} 
+                  width={client.width}   // Atributo crítico para CLS
+                  height={client.height} // Atributo crítico para CLS
                   className="h-full w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300" 
                   loading="lazy"
                 />
