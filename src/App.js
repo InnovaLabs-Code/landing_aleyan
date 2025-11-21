@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'; // Importar Suspense
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScroollTop';
@@ -43,6 +43,7 @@ function App() {
               <Route path="/services-detail" element={<ServicesDetail />} /> 
               <Route path="/projects-detail" element={<ProjectsDetail />} /> 
               <Route path="/contact-page" element={<ContactPage />} /> 
+              <Route path="/contact" element={<Navigate to="/contact-page" replace />} />
               <Route path="/quote" element={<QuoteForm />} /> 
             </Routes> 
           </Suspense>
