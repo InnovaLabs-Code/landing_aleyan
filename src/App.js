@@ -7,15 +7,15 @@ import WhatsAppWidget from './components/WhatsAppWidget';
 import { Analytics } from "@vercel/analytics/react"
 
 // 1. Componentes de Layout (Carga Estática, siempre necesarios)
+import HomeSection from './components/HomeSection'; 
 import Clients from './components/Clients'; 
 import QuoteForm from './components/QuoteForm';
 
 // 2. Componentes de Página (Carga Dinámica con React.lazy())
-const HomeSection = React.lazy(() => import('./components/HomeSection')); 
 const ServicesDetail = React.lazy(() => import('./components/ServicesDetail')); 
 const AboutDetail = React.lazy(() => import('./components/AboutDetail')); 
 const ProjectsDetail = React.lazy(() => import('./components/ProjectsDetail')); 
-const ContactPage = React.lazy(() => import('./components/ContactPage')); 
+const ContactPage = React.lazy(() => import('./components/ContactPage'));
 
 function App() { 
   return ( 

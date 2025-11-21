@@ -4,6 +4,7 @@ import { Users, Hammer, Award, ArrowRight, CheckCircle, Award as AwardIcon, User
 import { Link } from 'react-router-dom';
 // -> IMPORTAR HELMET
 import { Helmet } from 'react-helmet-async';
+import backgroundHome from '../assets/images/background-home.webp';
 
 // Componente Contador Animado (Mantenido igual)
 const AnimatedCounter = ({ from, to, duration, suffix = '' }) => {
@@ -47,7 +48,12 @@ const StatItem = ({ icon: Icon, value, label, delay, type }) => (
     >
         {/* <Icon className="w-6 h-6 text-gray-700" />  Puedes descomentar si quieres un icono pequeño */}{/* Iconos eliminados del diseño actual de la imagen */}
         <motion.span
-            className="text-3xl md:text-4xl font-extrabold text-amber-500" // Valor numérico en color ámbar
+            //className="text-3xl md:text-4xl font-extrabold text-amber-500" // Valor numérico en color ámbar
+            // CAMBIOS AQUI:
+            // 1. inline-block: Permite que el span tenga ancho.
+            // 2. min-w-[80px]: Reserva espacio suficiente para el número final (ej. "30+").
+            // 3. text-center: Centra el número dentro de ese espacio reservado.
+            className="inline-block min-w-[70px] text-center text-3xl md:text-4xl font-extrabold text-amber-500"
             initial={{ scale: 0.8 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: false, amount: 0.5 }}
@@ -152,8 +158,7 @@ const HomeSection = () => {
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat -z-10"
                         style={{
                             // backgroundImage: "url('https://images.unsplash.com/photo-1758218210743-8a5c47492bdf?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" // Imagen de construcción moderna (reemplaza con tu URL o '/images/fondo_landing.jpg')
-                             backgroundImage: "url('https://images.unsplash.com/photo-1641219996730-b21ca5b26d26?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" // Imagen de construcción moderna (reemplaza con tu URL o '/images/fondo_landing.jpg')
-                      
+                             backgroundImage: `url(${backgroundHome})`
                         }}
                     ></div>
 
@@ -163,14 +168,11 @@ const HomeSection = () => {
                     {/* Contenido del banner */}
                     <div className="container mx-auto px-6 z-10 flex flex-col md:flex-row items-center justify-between gap-8">
                         <div className="md:w-1/2 text-center md:text-left">
-                            <motion.h1
-                                className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg" // Texto principal en blanco
-                                initial={{ opacity: 0, y: -50 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8 }}
-                            >
-                                Calidad y Solidez <br /> en cada <span className="text-blue-600">Proyecto</span> {/* Color azul para "Futuro" */}
-                            </motion.h1>
+                            <h1 
+    className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg" 
+>
+    Calidad y Solidez <br /> en cada <span className="text-blue-600">Proyecto</span>
+</h1>
                             <motion.p
                                 className="text-lg sm:text-xl text-gray-200 max-w-3xl mx-auto md:mx-0 mb-12 drop-shadow-md" // Párrafo en un gris más claro para contraste
                                 initial={{ opacity: 0, y: -30 }}

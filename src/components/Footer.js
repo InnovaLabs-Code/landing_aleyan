@@ -10,34 +10,58 @@ const Footer = () => {
     <footer className="bg-neutral-800 text-white py-10">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Columna 1: Logo y Descripción */}
-        <div className="flex flex-col md:text-left">
-          
-          <Link to="/" className="flex items-center gap-3">
-              <img src={logo} alt="Logo Constructora Aleyan SAC" className="w-44 h-12 object-contain"  />
-            </Link>
-          
-          <p className="text-sm leading-relaxed mb-6 py-2 text-white">
-            Somos una empresa líder especializada en el diseño, fabricación y montaje de estructuras metálicas robustas y de alta calidad. 
-          </p>
-          <div className="flex md:justify-start space-x-4">
-            {/* Íconos de redes sociales */}
-            <a href="https://www.linkedin.com/in/aleyan-sac-5b5019381/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300" // CLAVE: El lector de pantalla leerá esto
-  aria-label="Perfil de LinkedIn de Constructora Aleyan">
-              <Linkedin className="w-5 h-5" />
-            </a>
-             <a href="https://www.facebook.com/people/Aleyan-Sac/61582829485004/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300" // CLAVE: El lector de pantalla leerá esto
-  aria-label="Página de Facebook de Constructora Aleyan">
-              <Facebook className="w-5 h-5" />
-            </a>
-            <a href="https://www.instagram.com/constructora.aleyan.pe/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a href="https://www.youtube.com/@ALEYAN-t8o" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
-              <Youtube className="w-5 h-5" />
-            </a>  
-            
-          </div>
-        </div>
+       <div className="flex flex-col md:text-left">
+  
+  <Link to="/" className="flex items-center gap-3">
+    {/* CORRECCIÓN CLS: Agregados width y height explícitos */}
+    {/* w-44 es 176px y h-12 es 48px. Esto reserva el espacio ANTES de cargar la imagen */}
+    <img 
+      src={logo} 
+      alt="Logo Constructora Aleyan SAC" 
+      width="176"
+      height="48"
+      className="w-44 h-12 object-contain" 
+    />
+  </Link>
+  
+  <p className="text-sm leading-relaxed mb-6 py-2 text-white">
+    Somos una empresa líder especializada en el diseño, fabricación y montaje de estructuras metálicas robustas y de alta calidad. 
+  </p>
+  
+  <div className="flex md:justify-start space-x-4">
+    {/* Íconos de redes sociales */}
+    <a href="https://www.linkedin.com/in/aleyan-sac-5b5019381/" target="_blank" rel="noopener noreferrer" 
+       className="text-gray-400 hover:text-white transition-colors duration-300"
+       aria-label="Perfil de LinkedIn de Constructora Aleyan">
+      <Linkedin className="w-5 h-5" />
+    </a>
+    <a href="https://www.facebook.com/people/Aleyan-Sac/61582829485004/" target="_blank" rel="noopener noreferrer" 
+       className="text-gray-400 hover:text-white transition-colors duration-300"
+       aria-label="Página de Facebook de Constructora Aleyan">
+      <Facebook className="w-5 h-5" />
+    </a>
+    <a 
+    href="https://www.instagram.com/constructora.aleyan.pe/" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="text-gray-400 hover:text-white transition-colors duration-300"
+    aria-label="Síguenos en Instagram"
+  >
+    <Instagram className="w-5 h-5" />
+  </a>
+
+  {/* 2. Corrección YouTube: Agregado aria-label */}
+  <a 
+    href="https://www.youtube.com/@ALEYAN-t8o" 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="text-gray-400 hover:text-white transition-colors duration-300"
+    aria-label="Visita nuestro canal de YouTube"
+  >
+    <Youtube className="w-5 h-5" />
+  </a>
+  </div>
+</div>
 
         {/* Columna 2: Oficina */}
         <div className="pt-1">
